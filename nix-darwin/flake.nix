@@ -29,6 +29,9 @@
         ];
         homebrew.onActivation.cleanup = "zap";
 
+      # Enables touch ID in ternimal
+      security.pam.enableSudoTouchIdAuth = true;
+
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
       nix.package = pkgs.nix;
