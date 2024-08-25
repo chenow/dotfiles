@@ -10,7 +10,10 @@
   home.stateVersion = "24.05";
 
   home.packages = [
-   pkgs.git
+    pkgs.git
+    pkgs.fzf
+    pkgs.vim
+    pkgs.direnv
   ];
 
   home.file = {};
