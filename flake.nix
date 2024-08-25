@@ -1,29 +1,23 @@
 {
-  description = "Pre-commit development environment";
+  description = "Home Manager configuration of chenow";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            python3
-            python3Packages.pip
-            pre-commit
-          ];
+  outputs = inputs@{ self, nixpkgs, home-manager }:
+    let
+      system = "aarch64-darwin";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      homeConfigurations."chenow" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-          shellHook = ''
-            echo "Python and pre-commit development environment"
-            echo "Python version: $(python --version)"
-            echo "pre-commit version: $(pre-commit --version)"
-          '';
-        };
-      });
+        modules = [ ./modules/home.nix ];
+      };
+    };
 }
