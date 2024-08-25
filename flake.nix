@@ -7,9 +7,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-utils.url = "github:numtide/flake-utils";
+    pre-commit-env = {
+      url = "github:chenow/nix-pre-commit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nixpkgs, home-manager, flake-utils, pre-commit-env }:
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -19,5 +24,9 @@
 
         modules = [ ./modules/home.nix ];
       };
-    };
+    } // flake-utils.lib.eachDefaultSystem (system:
+      let pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        devShells.default = pre-commit-env.outputs.devShells.${system}.default;
+      });
 }

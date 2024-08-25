@@ -9,21 +9,14 @@
   # release notes.
   home.stateVersion = "24.05";
 
-  home.packages = [
-    pkgs.git
-    pkgs.fzf
-    pkgs.vim
-    pkgs.direnv
-  ];
+  home.packages = [ pkgs.git pkgs.fzf pkgs.vim pkgs.direnv ];
 
   home.file = {
     ".config/direnv/direnv.toml".source = ./confs/direnv.toml;
     ".zshrc".source = ./confs/.zshrc;
   };
 
-  home.sessionVariables = {
-    EDITOR = "code";
-  };
+  home.sessionVariables = { EDITOR = "code"; };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
