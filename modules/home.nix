@@ -16,7 +16,10 @@
     pkgs.direnv
   ];
 
-  home.file = {};
+  home.file = {
+    ".config/direnv/direnv.toml".source = ./confs/direnv.toml;
+    ".zshrc".source = ./confs/.zshrc;
+  };
 
   home.sessionVariables = {
     EDITOR = "code";
