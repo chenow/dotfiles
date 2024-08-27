@@ -25,8 +25,9 @@
         modules = [ ./modules/home.nix ];
       };
     } // flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.legacyPackages.${system};
-      in {
-        devShells.default = pre-commit-env.outputs.devShells.${system}.default;
-      });
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        pre-commit-lib =
+          import "${pre-commit-env}/libs/dev-shell.nix" { inherit pkgs; };
+      in { devShells.default = pre-commit-lib.mkDevShell { }; });
 }
