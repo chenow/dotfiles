@@ -49,6 +49,6 @@
     grc = "git rebase --continue";
     gski = "git stash --keep-index";
     user-up = "home-manager switch --flake $DOTFILES";
-    system-up = "darwin-rebuild switch --flake $DOTFILES/nix-darwin";
+    system-up = "darwin-rebuild switch --flake $DOTFILES";
   };
 }
