@@ -21,13 +21,10 @@
     in {
       homeConfigurations."chenow" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-
         modules = [ ./modules/home.nix ];
       };
-    } // flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-        pre-commit-lib =
-          import "${pre-commit-env}/libs/dev-shell.nix" { inherit pkgs; };
-      in { devShells.default = pre-commit-lib.mkDevShell { }; });
+    }
+
+    # Devshells configuration
+    // (import ./devshells.nix { inherit nixpkgs flake-utils pre-commit-env; });
 }
