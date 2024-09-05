@@ -14,15 +14,20 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, flake-utils, pre-commit-env }:
+  outputs =
+    { self, nixpkgs, home-manager, flake-utils, pre-commit-env, ... }@inputs:
     let
       system = "aarch64-darwin";
+      username = "chenow";
       pkgs = nixpkgs.legacyPackages.${system};
+
     in {
-      homeConfigurations."chenow" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./modules/home.nix ];
-      };
+      # Home Manager configuration
+      homeConfigurations.${username} =
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./user-conf ];
+        };
     }
 
     # Devshells configuration
