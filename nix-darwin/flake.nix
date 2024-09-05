@@ -29,6 +29,10 @@
         ];
         homebrew.onActivation.cleanup = "zap";
 
+        nix.extraOptions = ''
+          experimental-features = nix-command flakes
+        '';
+
         # Enables touch ID in ternimal
         security.pam.enableSudoTouchIdAuth = true;
 
