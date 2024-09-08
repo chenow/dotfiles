@@ -100,11 +100,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1725813505,
-        "narHash": "sha256-5gxZc6qndRfbJqRdkThVWcbgQCdUER9RLclJGlG9l0A=",
+        "lastModified": 1725819791,
+        "narHash": "sha256-g5zIlUcsO8gL6bBVZQqZz9+b9aw2u3PC9ailXYHIY2k=",
         "owner": "chenow",
         "repo": "nix-pre-commit",
-        "rev": "2efa97a80621c9b49efaf3a7653fdc95e9e970f0",
+        "rev": "177e5c3c56457e63bd1dbe73a5288a2af2251aaa",
         "type": "github"
       },
       "original": {

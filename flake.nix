@@ -34,6 +34,7 @@
       machine = "Chenows-MacbookPro";
 
       pkgs = nixpkgs.legacyPackages.${system};
+      pre-commit-lib = pre-commit-env.lib.${system};
     in
     {
       # Nix darwin configuration
@@ -54,8 +55,8 @@
 
       # Formatter configuration
       formatter.${system} = pkgs.nixfmt-rfc-style;
-    }
 
-    # Devshells configuration
-    // (import ./devshells.nix { inherit nixpkgs flake-utils pre-commit-env; });
+      # Devshells configuration
+      devShell.${system} = pre-commit-lib.mkDevShell { };
+    };
 }
