@@ -9,9 +9,17 @@
   # release notes.
   home.stateVersion = "24.05";
 
-  home.packages = with pkgs; [ git fzf vim direnv zsh ];
+  home.packages = with pkgs; [
+    git
+    fzf
+    vim
+    direnv
+    zsh
+  ];
 
-  home.file = { ".config/direnv/direnv.toml".source = ./confs/direnv.toml; };
+  home.file = {
+    ".config/direnv/direnv.toml".source = ./confs/direnv.toml;
+  };
 
   home.sessionVariables = {
     EDITOR = "code";
@@ -28,7 +36,12 @@
     autosuggestion.enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "docker" "macos" "direnv" ];
+      plugins = [
+        "git"
+        "docker"
+        "macos"
+        "direnv"
+      ];
       theme = "robbyrussell";
 
     };

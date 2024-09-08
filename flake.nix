@@ -18,29 +18,42 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, flake-utils
-    , pre-commit-env, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nix-darwin,
+      home-manager,
+      flake-utils,
+      pre-commit-env,
+      ...
+    }:
     let
       system = "aarch64-darwin";
       username = "chenow";
       machine = "Chenows-MacbookPro";
 
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
+    in
+    {
       # Nix darwin configuration
       darwinConfigurations.${machine} = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit system; };
+        specialArgs = {
+          inherit system;
+        };
         modules = [ ./system-conf ];
       };
       system.configurationRevision = self.rev or self.dirtyRev or null;
       darwinPackages = self.darwinConfigurations.${machine}.pkgs;
 
       # Home Manager configuration
-      homeConfigurations.${username} =
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./user-conf ];
-        };
+      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./user-conf ];
+      };
+
+      # Formatter configuration
+      formatter.${system} = pkgs.nixfmt-rfc-style;
     }
 
     # Devshells configuration

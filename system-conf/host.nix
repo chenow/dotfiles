@@ -1,4 +1,5 @@
-{ pkgs, system, ... }: {
+{ pkgs, system, ... }:
+{
   homebrew.enable = true;
   homebrew.casks = [
     "arc"
