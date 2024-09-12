@@ -4,11 +4,6 @@
     experimental-features = nix-command flakes
   '';
 
-  # Enables touch ID in ternimal
-  security.pam.enableSudoTouchIdAuth = true;
-
-  system.defaults.NSGlobalDomain.AppleWindowTabbingMode = "always";
-
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   nix.package = pkgs.nix;
@@ -22,6 +17,4 @@
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = system;
-
-  system.defaults.WindowManager.AutoHide = true;
 }
