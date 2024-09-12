@@ -1,28 +1,13 @@
 { pkgs, system, ... }:
 {
-  homebrew.enable = true;
-  homebrew.casks = [
-    "arc"
-    "notion"
-    "notion-calendar"
-    "microsoft-outlook"
-    "microsoft-excel"
-    "microsoft-powerpoint"
-    "microsoft-teams"
-    "microsoft-word"
-    "telegram"
-    "whatsapp"
-    "slack"
-    "visual-studio-code"
-  ];
-  homebrew.onActivation.cleanup = "zap";
-
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
 
   # Enables touch ID in ternimal
   security.pam.enableSudoTouchIdAuth = true;
+
+  system.defaults.NSGlobalDomain.AppleWindowTabbingMode = "always";
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
