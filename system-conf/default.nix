@@ -6,5 +6,8 @@
 }:
 
 {
-  imports = [ (import ./host.nix ({ inherit pkgs system; })) ];
+  imports = [
+    (import ./host.nix ({ inherit pkgs system; }))
+    (import ./finder.nix)
+  ];
 }
