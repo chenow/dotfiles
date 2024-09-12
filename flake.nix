@@ -16,6 +16,10 @@
       url = "github:chenow/nix-pre-commit";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -26,6 +30,7 @@
       home-manager,
       flake-utils,
       pre-commit-env,
+      nixvim,
       ...
     }:
     let
@@ -50,8 +55,13 @@
       # Home Manager configuration
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./user-conf ];
+        modules = [
+          ./user-conf
+          nixvim.homeManagerModules.nixvim
+        ];
       };
+
+      nixpkgs.config.allowUnfree = true;
 
       # Formatter configuration
       formatter.${system} = pkgs.nixfmt-rfc-style;

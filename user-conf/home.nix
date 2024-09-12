@@ -12,7 +12,6 @@
   home.packages = with pkgs; [
     git
     fzf
-    vim
     direnv
     zsh
   ];
@@ -22,7 +21,6 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "code";
     DOTFILES = "/Users/chenow/Documents/git/dotfiles";
   };
 
