@@ -19,7 +19,8 @@
   };
 
   home.sessionVariables = {
-    DOTFILES = "/Users/chenow/Documents/git/dotfiles";
+    GITREPOS = "/Users/chenow/Documents/git";
+    DOTFILES = "${config.home.sessionVariables.GITREPOS}/dotfiles";
   };
 
   # Let Home Manager install and manage itself.
@@ -57,7 +58,7 @@
     gck = "git checkout";
     grc = "git rebase --continue";
     gski = "git stash --keep-index";
-    user-up = "home-manager switch --flake $DOTFILES";
-    system-up = "darwin-rebuild switch --flake $DOTFILES";
+    user-up = "home-manager switch --flake ${config.home.sessionVariables.DOTFILES}";
+    system-up = "darwin-rebuild switch --flake ${config.home.sessionVariables.DOTFILES}";
   };
 }
