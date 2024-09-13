@@ -36,7 +36,7 @@
     let
       system = "aarch64-darwin";
       username = "chenow";
-      machine = "Chenows-MacbookPro";
+      machine = "MacBook-Pro-de-Antoine";
 
       pkgs = nixpkgs.legacyPackages.${system};
       pre-commit-lib = pre-commit-env.lib.${system};
