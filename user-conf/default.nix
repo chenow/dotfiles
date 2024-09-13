@@ -10,5 +10,6 @@
     (./home.nix)
     (./neovim.nix)
     (./wezterm.nix)
+    (./git.nix)
   ];
 }
