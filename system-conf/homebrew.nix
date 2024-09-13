@@ -14,6 +14,7 @@
     "whatsapp"
     "slack"
     "visual-studio-code"
+    "wezterm"
   ];
   homebrew.onActivation.cleanup = "zap";
 }
