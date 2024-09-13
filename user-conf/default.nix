@@ -9,5 +9,6 @@
   imports = [
     (./home.nix)
     (./neovim.nix)
+    (./wezterm.nix)
   ];
 }
