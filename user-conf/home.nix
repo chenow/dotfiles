@@ -16,11 +16,13 @@
 
   home.file = {
     ".config/direnv/direnv.toml".source = ./confs/direnv.toml;
+    ".config/nixpkgs/config.nix".source = ./confs/nixpkgs-config.nix;
   };
 
   home.sessionVariables = {
     GITREPOS = "/Users/chenow/Documents/git";
     DOTFILES = "${config.home.sessionVariables.GITREPOS}/dotfiles";
+    NIXPKGS_ALLOW_UNFREE = 1;
   };
 
   # Let Home Manager install and manage itself.
@@ -58,7 +60,11 @@
     gck = "git checkout";
     grc = "git rebase --continue";
     gski = "git stash --keep-index";
-    user-up = "home-manager switch --flake ${config.home.sessionVariables.DOTFILES}";
-    system-up = "darwin-rebuild switch --flake ${config.home.sessionVariables.DOTFILES}";
+    user-up = "home-manager switch --impure --flake ${config.home.sessionVariables.DOTFILES}";
+    system-up = "darwin-rebuild switch --impure --flake ${config.home.sessionVariables.DOTFILES}";
+  };
+
+  programs.vscode = {
+    enable = true;
   };
 }
