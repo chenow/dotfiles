@@ -3,8 +3,6 @@
   homebrew.enable = true;
   homebrew.casks = [
     "arc"
-    "notion"
-    "notion-calendar"
     "microsoft-outlook"
     "microsoft-excel"
     "microsoft-powerpoint"
@@ -15,6 +13,7 @@
     "slack"
     "visual-studio-code"
     "wezterm"
+    "obsidian"
   ];
   homebrew.onActivation.cleanup = "zap";
 }
