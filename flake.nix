@@ -45,7 +45,7 @@
       # Nix darwin configuration
       darwinConfigurations.${machine} = nix-darwin.lib.darwinSystem {
         specialArgs = {
-          inherit system;
+          inherit system username;
         };
         modules = [ ./system-conf ];
       };

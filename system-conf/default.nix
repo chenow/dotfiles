@@ -2,6 +2,7 @@
   pkgs,
   lib,
   system,
+  username,
   ...
 }:
 
@@ -10,6 +11,7 @@
     (import ./finder.nix)
     (import ./homebrew.nix)
     (import ./additional.nix)
+    (import ./dock.nix { inherit username; })
   ];
 
   nix.extraOptions = ''
