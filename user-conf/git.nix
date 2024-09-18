@@ -17,5 +17,9 @@
         fi; \
     }; f";
     };
+
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 }
