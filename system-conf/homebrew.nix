@@ -14,6 +14,7 @@
     "visual-studio-code"
     "wezterm"
     "obsidian"
+    "docker"
   ];
   homebrew.onActivation.cleanup = "zap";
 }
