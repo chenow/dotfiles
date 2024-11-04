@@ -15,6 +15,7 @@
     "wezterm"
     "obsidian"
     "docker"
+    "zoom"
   ];
   homebrew.onActivation.cleanup = "zap";
 }

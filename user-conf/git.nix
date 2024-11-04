@@ -17,6 +17,12 @@
         fi; \
     }; f";
     };
+    ignores = [
+      ".DS_Store"
+      ".direnv"
+      ".envrc"
+      ".vscode"
+    ];
 
     extraConfig = {
       init.defaultBranch = "main";

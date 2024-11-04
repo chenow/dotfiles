@@ -14,6 +14,7 @@
     direnv
     htop
     neofetch
+    firebase-tools
   ];
 
   home.file = {
