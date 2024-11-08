@@ -16,6 +16,7 @@
     "obsidian"
     "docker"
     "zoom"
+    "eclipse-installer"
   ];
   homebrew.onActivation.cleanup = "zap";
 }
