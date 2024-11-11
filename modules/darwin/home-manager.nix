@@ -8,11 +8,6 @@
 
 let
   user = "chenow";
-  # Define the content of your file as a derivation
-  myEmacsLauncher = pkgs.writeScript "emacs-launcher.command" ''
-    #!/bin/sh
-    emacsclient -c -n &
-  '';
   sharedFiles = import ../shared/files.nix { inherit config pkgs; };
   additionalFiles = import ./files.nix { inherit user config pkgs; };
 in
@@ -32,23 +27,7 @@ in
   homebrew = {
     enable = true;
     casks = pkgs.callPackage ./casks.nix { };
-    # onActivation.cleanup = "uninstall";
-
-    # These app IDs are from using the mas CLI app
-    # mas = mac app store
-    # https://github.com/mas-cli/mas
-    #
-    # $ nix shell nixpkgs#mas
-    # $ mas search <app name>
-    #
-    # If you have previously added these apps to your Mac App Store profile (but not installed them on this system),
-    # you may receive an error message "Redownload Unavailable with This Apple ID".
-    # This message is safe to ignore. (https://github.com/dustinlyons/nixos-config/issues/83)
-
-    masApps = {
-      "1password" = 1333542190;
-      "wireguard" = 1451685025;
-    };
+    onActivation.cleanup = "uninstall";
   };
 
   # Enable home-manager
@@ -68,10 +47,25 @@ in
           file = lib.mkMerge [
             sharedFiles
             additionalFiles
-            { "emacs-launcher.command".source = myEmacsLauncher; }
           ];
 
           stateVersion = "23.11";
+
+          sessionVariables = {
+            GITREPOS = "/Users/${config.home.username}/Documents/git";
+            DOTFILES = "${config.home.sessionVariables.GITREPOS}/dotfiles";
+            NIXPKGS_ALLOW_UNFREE = 1;
+          };
+
+          shellAliases = {
+            shell = "docker compose run --rm shell";
+            ga = "git add .";
+            gck = "git checkout";
+            grc = "git rebase --continue";
+            gski = "git stash --keep-index";
+            user-up = "home-manager switch --impure --flake ${config.home.sessionVariables.DOTFILES}";
+            system-up = "darwin-rebuild switch --impure --flake ${config.home.sessionVariables.DOTFILES}";
+          };
         };
         programs = { } // import ../shared/home-manager.nix { inherit config pkgs lib; };
 
@@ -89,17 +83,12 @@ in
         { path = "/Applications/Slack.app/"; }
         { path = "/System/Applications/Messages.app/"; }
         { path = "/System/Applications/Facetime.app/"; }
-        { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
         { path = "/System/Applications/Music.app/"; }
         { path = "/System/Applications/News.app/"; }
         { path = "/System/Applications/Photos.app/"; }
         { path = "/System/Applications/Photo Booth.app/"; }
         { path = "/System/Applications/TV.app/"; }
         { path = "/System/Applications/Home.app/"; }
-        {
-          path = toString myEmacsLauncher;
-          section = "others";
-        }
         {
           path = "${config.users.users.${user}.home}/.local/share/";
           section = "others";
