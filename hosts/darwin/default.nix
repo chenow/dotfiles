@@ -1,5 +1,4 @@
 {
-  agenix,
   config,
   pkgs,
   ...
@@ -12,10 +11,9 @@ in
 {
 
   imports = [
-    ../../modules/darwin/secrets.nix
     ../../modules/darwin/home-manager.nix
     ../../modules/shared
-    agenix.darwinModules.default
+    ../../modules/shared/neovim.nix
   ];
 
   # Auto upgrade nix package and the daemon service.
@@ -56,20 +54,25 @@ in
   system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages =
-    with pkgs;
-    [
-      agenix.packages."${pkgs.system}".default
-    ]
-    ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
+  environment.systemPackages = (import ../../modules/shared/packages.nix { inherit pkgs; });
+
+  environment.variables = {
+    TERMINAL = "wezterm";
+    BROWSER = "arc";
+    EDITOR = "nvim";
+  };
+
+  security.pam.enableSudoTouchIdAuth = true;
 
   system = {
     stateVersion = 4;
-
     defaults = {
       NSGlobalDomain = {
         AppleShowAllExtensions = true;
         ApplePressAndHoldEnabled = false;
+        AppleShowAllFiles = true;
+
+        AppleWindowTabbingMode = "fullscreen";
 
         # 120, 90, 60, 30, 12, 6, 2
         KeyRepeat = 2;
@@ -83,15 +86,39 @@ in
       };
 
       dock = {
-        autohide = false;
+        autohide = true;
         show-recents = false;
-        launchanim = true;
-        orientation = "bottom";
-        tilesize = 48;
+        minimize-to-application = true;
+        mineffect = "scale";
+        tilesize = 64;
+        persistent-apps = [
+          "/Applications/Arc.app"
+          "/Applications/Microsoft Outlook.app"
+          "/Applications/Microsoft Teams.app"
+          "/Applications/Obsidian.app"
+          "/Applications/WezTerm.app"
+          "/Applications/Visual Studio Code.app"
+          "/Applications/WhatsApp.app"
+          "/Applications/Slack.app"
+          "/Applications/Telegram.app"
+        ];
+        persistent-others = [
+          "/Users/${user}/Desktop"
+          "/Users/${user}/Downloads"
+        ];
       };
 
       finder = {
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+        CreateDesktop = false;
+        FXEnableExtensionChangeWarning = false;
+        FXPreferredViewStyle = "Nlsv";
+        QuitMenuItem = true;
+        ShowPathbar = true;
+        ShowStatusBar = true;
         _FXShowPosixPathInTitle = false;
+        FXDefaultSearchScope = "SCcf";
       };
 
       trackpad = {

@@ -1,12 +1,14 @@
 {
-  description = "Starter Configuration with secrets for MacOS and NixOS";
+  description = "Starter Configuration for MacOS and NixOS";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    agenix.url = "github:ryantm/agenix";
     home-manager.url = "github:nix-community/home-manager";
     darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
     };
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
@@ -23,13 +25,18 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    secrets = {
-      url = "git+ssh://git@github.com/chenow/nix-secrets.git";
-      flake = false;
+    pre-commit-env = {
+      url = "github:chenow/nix-pre-commit";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
   };
   outputs =
@@ -43,8 +50,7 @@
       home-manager,
       nixpkgs,
       disko,
-      agenix,
-      secrets,
+      ...
     }@inputs:
     let
       user = "chenow";
@@ -57,26 +63,6 @@
         "x86_64-darwin"
       ];
       forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
-      devShell =
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          default =
-            with pkgs;
-            mkShell {
-              nativeBuildInputs = with pkgs; [
-                bashInteractive
-                git
-                age
-                age-plugin-yubikey
-              ];
-              shellHook = with pkgs; ''
-                export EDITOR=vim
-              '';
-            };
-        };
       mkApp = scriptName: system: {
         type = "app";
         program = "${
@@ -108,7 +94,6 @@
       };
     in
     {
-      devShells = forAllSystems devShell;
       apps =
         nixpkgs.lib.genAttrs linuxSystems mkLinuxApps
         // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
@@ -120,6 +105,7 @@
           specialArgs = inputs;
           modules = [
             home-manager.darwinModules.home-manager
+            inputs.nixvim.nixDarwinModules.nixvim
             nix-homebrew.darwinModules.nix-homebrew
             {
               nix-homebrew = {
@@ -161,5 +147,8 @@
       # );
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
 
-    };
+    }
+    // inputs.flake-utils.lib.eachDefaultSystem (system: {
+      devShells.default = inputs.pre-commit-env.lib.${system}.mkDevShell { };
+    });
 }

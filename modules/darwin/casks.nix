@@ -2,14 +2,26 @@ _:
 
 [
   # Development Tools
-  "homebrew/cask/docker"
+  "docker"
   "visual-studio-code"
+  "wezterm"
 
   # Communication Tools
   "slack"
   "telegram"
   "zoom"
+  "whatsapp"
+
+  # Microsoft suite
+  "microsoft-outlook"
+  "microsoft-excel"
+  "microsoft-powerpoint"
+  "microsoft-teams"
+  "microsoft-word"
 
   # Browsers
-  "arc-browser"
+  "arc"
+
+  # Notes
+  "obsidian"
 ]

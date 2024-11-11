@@ -12,6 +12,7 @@ with pkgs;
   # coreutils
   # killall
   neofetch
+  direnv
   # openssh
   # sqlite
   # wget
@@ -20,7 +21,7 @@ with pkgs;
   # Encryption and security tools
   # age
   # age-plugin-yubikey
-  # gnupg
+  gnupg
   # libfido2
 
   # Cloud-related tools and SDKs
@@ -35,7 +36,7 @@ with pkgs;
   # hack-font
   # noto-fonts
   # noto-fonts-emoji
-  # meslo-lgs-nf 
+  # meslo-lgs-nf
 
   # Text and terminal utilities
   htop
