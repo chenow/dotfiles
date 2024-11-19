@@ -19,7 +19,7 @@ mkdir -p ~/Documents/git
 cd ~/Documents/git
 git clone git@github.com:chenow/dotfiles.git
 cd dotfiles
-nix run .#build-switch
+nix run --experimental-features "nix-command flakes" .#build-switch
 ```
 
 For more information, go to https://github.com/dustinlyons/nixos-config/
