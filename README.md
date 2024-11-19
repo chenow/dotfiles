@@ -1,6 +1,6 @@
 # My machine configuration
 
-This repository holds my computer configuration, fully declared thanks to nix-darwin and home-manager.
+This repository holds my computer configuration, fully declared thanks to nix-darwin and home-manager. Requries a MacOS system.
 
 ## Usage
 
