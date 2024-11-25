@@ -77,12 +77,19 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
   };
   system.stateVersion = "24.05"; # Did you read the comment?
 
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
+
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
 
   nix = {
     settings = {

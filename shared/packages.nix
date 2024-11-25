@@ -12,9 +12,6 @@
     git
     fzf
 
-    # Cloud-related tools and SDKs
-    docker
-
     # Media-related packages
     htop
   ];
