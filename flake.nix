@@ -91,13 +91,16 @@
       );
 
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
+        nixos = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
-          specialArgs = inputs;
+          specialArgs = {
+            inherit inputs user;
+          };
           modules = [
             ./hosts/nixos
             inputs.nixvim.nixosModules.nixvim
             home-manager.nixosModules.home-manager
+            { home-manager.extraSpecialArgs = specialArgs; }
             {
               home-manager = {
                 useGlobalPkgs = true;
