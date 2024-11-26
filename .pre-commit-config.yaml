@@ -32,3 +32,4 @@ repos:
         name: nix-check
         language: system
         entry: sh -c "nix flake check"
+        stages: [pre-push]
