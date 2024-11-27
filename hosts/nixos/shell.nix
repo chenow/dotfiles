@@ -6,8 +6,6 @@
 }:
 {
   environment.variables = {
-    EDITOR = "nvim";
-    TERMINAL = "wezterm";
     BROWSER = "google-chrome";
   };
 
@@ -16,7 +14,10 @@
     DOTFILES = "${GITREPOS}/dotfiles";
   };
 
-  programs.zsh.shellAliases = {
+  home-manager.users.${user}.home.shellAliases = {
     system-up = "sudo nixos-rebuild switch --flake ${config.environment.sessionVariables.DOTFILES}";
+    gck = "git checkout";
+    grc = "git rebase --continue";
+    gski = "git stash --keep-index";
   };
 }

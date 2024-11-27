@@ -2,12 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-let
-  user = "chenow";
-in
+{
+  config,
+  pkgs,
+  user,
+  ...
+}:
 {
   # Bootloader.
+
+  home-manager.users.${user}.home.homeDirectory = "/home/${user}";
+  users.defaultUserShell = pkgs.zsh;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -71,7 +77,7 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  users.users.chenow = {
+  users.users.${user} = {
     isNormalUser = true;
     description = "chenow";
     extraGroups = [
@@ -82,34 +88,9 @@ in
   };
   system.stateVersion = "24.05"; # Did you read the comment?
 
-  users.defaultUserShell = pkgs.zsh;
-  programs.zsh.enable = true;
-
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
-  };
-
-  nix = {
-    settings = {
-      allowed-users = [ "${user}" ];
-      trusted-users = [
-        "@admin"
-        "${user}"
-      ];
-      substituters = [
-        "https://cache.nixos.org/"
-        "https://nix-community.cachix.org/"
-      ];
-      trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-    };
-    package = pkgs.nix;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
   };
 }

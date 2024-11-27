@@ -1,9 +1,9 @@
 {
   description = "Starter Configuration for MacOS and NixOS";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     darwin = {
-      url = "github:LnL7/nix-darwin/master";
+      url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -42,10 +42,6 @@
     {
       self,
       darwin,
-      nix-homebrew,
-      homebrew-bundle,
-      homebrew-core,
-      homebrew-cask,
       home-manager,
       nixpkgs,
       ...
@@ -63,32 +59,18 @@
       forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
     in
     {
-      darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (
-        system:
-        darwin.lib.darwinSystem {
-          inherit system;
-          specialArgs = inputs;
-          modules = [
-            ./hosts/darwin
-            home-manager.darwinModules.home-manager
-            inputs.nixvim.nixDarwinModules.nixvim
-            nix-homebrew.darwinModules.nix-homebrew
-            {
-              nix-homebrew = {
-                inherit user;
-                enable = true;
-                taps = {
-                  "homebrew/homebrew-core" = homebrew-core;
-                  "homebrew/homebrew-cask" = homebrew-cask;
-                  "homebrew/homebrew-bundle" = homebrew-bundle;
-                };
-                mutableTaps = false;
-                autoMigrate = true;
-              };
-            }
-          ];
-        }
-      );
+      darwinConfigurations."MacBook-Pro-de-Antoine" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = {
+          inherit self inputs user;
+        };
+        modules = [
+          ./hosts/darwin
+          home-manager.darwinModules.home-manager
+          inputs.nixvim.nixDarwinModules.nixvim
+          inputs.nix-homebrew.darwinModules.nix-homebrew
+        ];
+      };
 
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem rec {
@@ -97,22 +79,13 @@
             inherit inputs user;
           };
           modules = [
-            ./hosts/nixos
-            inputs.nixvim.nixosModules.nixvim
             home-manager.nixosModules.home-manager
-            { home-manager.extraSpecialArgs = specialArgs; }
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.${user} = import ./hosts/nixos/home-manager;
-              };
-            }
+            inputs.nixvim.nixosModules.nixvim
+            ./hosts/nixos
           ];
         };
       };
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
-
     }
     // inputs.flake-utils.lib.eachDefaultSystem (system: {
       devShells.default = inputs.pre-commit-env.lib.${system}.mkDevShell { };
