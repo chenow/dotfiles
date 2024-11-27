@@ -6,6 +6,5 @@
     ./git.nix
     ./wezterm.nix
     ./additional.nix
-    ./files.nix
   ];
 }
