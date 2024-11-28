@@ -2,9 +2,11 @@
   description = "Starter Configuration for MacOS and NixOS";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-nixos.url = "github:NixOS/nixpkgs/nixos-unstable";
     darwin = {
       url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -44,6 +46,8 @@
       darwin,
       home-manager,
       nixpkgs,
+      nixpkgs-darwin,
+      nixpkgs-nixos,
       ...
     }@inputs:
     let
@@ -73,7 +77,7 @@
       };
 
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem rec {
+        nixos = nixpkgs-nixos.lib.nixosSystem rec {
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs user;
