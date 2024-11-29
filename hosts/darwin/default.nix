@@ -12,5 +12,6 @@
     ./system.nix
     ./shell.nix
     ./user.nix
+    ./aerospace.nix
   ];
 }

@@ -26,6 +26,7 @@
   system = {
     defaults = {
       NSGlobalDomain = {
+        NSWindowShouldDragOnGesture = true;
         AppleShowAllExtensions = true;
         ApplePressAndHoldEnabled = false;
         AppleShowAllFiles = true;
