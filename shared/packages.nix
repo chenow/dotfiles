@@ -11,6 +11,10 @@
     git
     fzf
     firebase-tools
+    ngrok
+
+    # Nix-related packages
+    cachix
 
     # Media-related packages
     htop

@@ -16,8 +16,5 @@
 
   home-manager.users.${user}.home.shellAliases = {
     system-up = "sudo nixos-rebuild switch --flake ${config.environment.sessionVariables.DOTFILES}";
-    gck = "git checkout";
-    grc = "git rebase --continue";
-    gski = "git stash --keep-index";
   };
 }
