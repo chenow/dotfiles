@@ -4,8 +4,7 @@
   lib,
   user,
   ...
-}:
-{
+}: {
   config.environment.variables = {
     TERMINAL = "wezterm";
     EDITOR = "nvim";

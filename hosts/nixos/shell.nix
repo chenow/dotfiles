@@ -3,8 +3,7 @@
   config,
   user,
   ...
-}:
-{
+}: {
   environment.variables = {
     BROWSER = "google-chrome";
   };

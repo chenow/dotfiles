@@ -4,9 +4,7 @@
   lib,
   user,
   ...
-}:
-{
-
+}: {
   home-manager.users.${user}.home = {
     sessionVariables = rec {
       GITREPOS = "${config.users.users."${user}".home}/Documents/git";

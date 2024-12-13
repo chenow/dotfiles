@@ -5,10 +5,7 @@
   user,
   inputs,
   ...
-}:
-
-{
-
+}: {
   nix-homebrew = {
     inherit user;
     enable = true;

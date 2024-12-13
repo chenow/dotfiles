@@ -4,8 +4,7 @@
   pkgs,
   user,
   ...
-}:
-{
+}: {
   imports = [
     ../default-settings.nix
     ./hardware-configuration.nix

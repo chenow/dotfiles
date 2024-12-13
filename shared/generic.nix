@@ -4,8 +4,7 @@
   lib,
   user,
   ...
-}:
-{
+}: {
   programs.zsh.enable = true;
 
   nixpkgs = {
@@ -20,7 +19,7 @@
   nix = {
     package = pkgs.nix;
     settings = {
-      allowed-users = [ "${user}" ];
+      allowed-users = ["${user}"];
       trusted-users = [
         "@admin"
         "${user}"
@@ -39,5 +38,4 @@
       experimental-features = nix-command flakes
     '';
   };
-
 }

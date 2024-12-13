@@ -5,8 +5,7 @@
   lib,
   user,
   ...
-}:
-{
+}: {
   # Load configuration that is shared across systems
   environment.variables = {
     BROWSER = "arc";

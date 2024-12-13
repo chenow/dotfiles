@@ -14,6 +14,7 @@ xcode-select --install
 - Install [nixos](https://nixos.org/download/)
 
 - clone the repository and let nixos do its things:
+
 ```bash
 mkdir -p ~/Documents/git
 cd ~/Documents/git

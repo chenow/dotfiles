@@ -4,8 +4,7 @@
   lib,
   user,
   ...
-}:
-{
+}: {
   home-manager.users.${user}.home.homeDirectory = "/Users/${user}";
 
   users.users.${user} = {

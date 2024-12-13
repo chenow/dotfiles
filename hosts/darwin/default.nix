@@ -4,8 +4,7 @@
   lib,
   user,
   ...
-}:
-{
+}: {
   imports = [
     ../default-settings.nix
     ./homebrew.nix

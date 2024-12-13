@@ -12,6 +12,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
@@ -48,28 +52,29 @@
       inputs.flake-utils.follows = "flake-utils";
     };
   };
-  outputs =
-    {
-      self,
-      darwin,
-      home-manager,
-      nixpkgs,
-      nixpkgs-darwin,
-      nixpkgs-nixos,
-      ...
-    }@inputs:
-    let
-      user = "chenow";
-      linuxSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-      darwinSystems = [
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
-      forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
-    in
+  outputs = {
+    self,
+    darwin,
+    home-manager,
+    nixpkgs,
+    nixpkgs-darwin,
+    nixpkgs-nixos,
+    systems,
+    ...
+  } @ inputs: let
+    user = "chenow";
+    linuxSystems = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
+    darwinSystems = [
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+    forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
+    eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+    treefmtConfig = import ./treefmt.nix;
+  in
     {
       darwinConfigurations."MacBook-Pro-de-Antoine" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
@@ -97,9 +102,9 @@
           ];
         };
       };
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      formatter = eachSystem (pkgs: inputs.treefmt-nix.lib.mkWrapper pkgs treefmtConfig);
     }
     // inputs.flake-utils.lib.eachDefaultSystem (system: {
-      devShells.default = inputs.pre-commit-env.lib.${system}.mkDevShell { };
+      devShells.default = inputs.pre-commit-env.lib.${system}.mkDevShell {};
     });
 }

@@ -5,8 +5,7 @@
   user,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     ../shared
   ];

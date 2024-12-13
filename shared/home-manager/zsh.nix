@@ -3,8 +3,7 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   config.programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
@@ -32,7 +31,7 @@
     nix-direnv.enable = true;
     config = {
       global.hide_env_diff = true;
-      whitelist.prefix = [ "${config.home.homeDirectory}" ];
+      whitelist.prefix = ["${config.home.homeDirectory}"];
     };
   };
 }

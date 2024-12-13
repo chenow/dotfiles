@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   name = "Antoine Chéneau";
   user = "chenow";
   email = "antoine.cheneau@outlook.com";
-in
-{
+in {
   programs.git = {
     enable = true;
     ignores = [
