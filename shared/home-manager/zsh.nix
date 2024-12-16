@@ -14,8 +14,9 @@
       plugins = [
         "git"
         "docker"
-        # "macos"
+        "macos"
         "direnv"
+        "brew"
       ];
       theme = "robbyrussell";
     };
