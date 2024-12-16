@@ -2,7 +2,8 @@
   pkgs,
   config,
   lib,
+  user,
   ...
 }: {
-  services.aerospace.enable = true;
+  config.home-manager.users.${user}.home.file.".aerospace.toml".source = ./config/aerospace.toml;
 }
