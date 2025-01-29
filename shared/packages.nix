@@ -11,6 +11,10 @@
     fzf
     firebase-tools
     ngrok
+    awscli
+    terraform
+    google-cloud-sdk
+    google-cloud-sql-proxy
 
     # Nix-related packages
     cachix

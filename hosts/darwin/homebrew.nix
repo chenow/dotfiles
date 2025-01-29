@@ -29,6 +29,7 @@
       "visual-studio-code"
       "wezterm"
       "aerospace"
+      "unetbootin"
 
       # Communication Tools
       "slack"
