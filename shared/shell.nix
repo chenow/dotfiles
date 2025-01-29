@@ -14,5 +14,6 @@
     gck = "git checkout";
     grc = "git rebase --continue";
     gski = "git stash --keep-index";
+    shell = "docker compose run --rm shell";
   };
 }
