@@ -18,6 +18,7 @@
 
   nix = {
     package = pkgs.nix;
+    enable = true;
     settings = {
       allowed-users = ["${user}"];
       trusted-users = [

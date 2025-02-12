@@ -13,9 +13,6 @@
 
   security.pam.enableSudoTouchIdAuth = true;
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   # Turn off NIX_PATH warnings now that we're using flakes
   system.checks.verifyNixPath = false;
 
