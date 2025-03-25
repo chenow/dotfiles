@@ -16,6 +16,13 @@
     google-cloud-sdk
     google-cloud-sql-proxy
 
+    # Programming languages related packages
+    python313Full
+    maven
+    bun
+    nodejs
+    spark
+
     # Nix-related packages
     cachix
 

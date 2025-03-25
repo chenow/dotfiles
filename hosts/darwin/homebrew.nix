@@ -43,6 +43,7 @@
       "microsoft-powerpoint"
       "microsoft-teams"
       "microsoft-word"
+      "microsoft-auto-update"
 
       # Browsers
       "arc"
