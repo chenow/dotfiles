@@ -11,20 +11,16 @@
     fzf
     firebase-tools
     ngrok
-    awscli
-    terraform
+    awscli2
     google-cloud-sdk
     google-cloud-sql-proxy
 
     # Programming languages related packages
+    terraform
     python313Full
-    maven
     bun
     nodejs
-    spark
-
-    # Nix-related packages
-    cachix
+    uv
 
     # Media-related packages
     htop

@@ -20,7 +20,7 @@
       ];
       theme = "robbyrussell";
     };
-    initExtra = ''
+    initContent = ''
       echo "Welcome to Oh My Zsh managed by Home Manager!"
     '';
   };
