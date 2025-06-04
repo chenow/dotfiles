@@ -11,7 +11,7 @@
       DOTFILES = "${GITREPOS}/dotfiles";
     };
     shellAliases = {
-      system-up = "darwin-rebuild switch --flake ${
+      system-up = "sudo darwin-rebuild switch --flake ${
         config.home-manager.users.${user}.home.sessionVariables.DOTFILES
       }";
     };
