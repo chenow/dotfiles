@@ -1,25 +1,19 @@
-{
-  user,
-  inputs,
-  ...
-}: {
-  nix-homebrew = {
-    inherit user;
-    enable = true;
-    taps = {
-      "homebrew/homebrew-core" = inputs.homebrew-core;
-      "homebrew/homebrew-cask" = inputs.homebrew-cask;
-      "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
-    };
-    mutableTaps = false;
-    autoMigrate = true;
-  };
-
+{...}: let
+  setAsGreedyCasks = builtins.map (cask: {
+    name = cask;
+    greedy = true;
+  });
+in {
   homebrew = {
     enable = true;
     global.autoUpdate = false;
-    onActivation.cleanup = "zap";
-    casks = [
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "zap";
+      upgrade = true;
+    };
+
+    casks = setAsGreedyCasks [
       # Development Tools
       "docker"
       "visual-studio-code"
@@ -46,5 +40,6 @@
       # Notes
       "obsidian"
     ];
+    caskArgs.no_quarantine = true;
   };
 }

@@ -14,19 +14,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
-    };
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,7 +38,6 @@
         ./hosts/darwin
         inputs.home-manager.darwinModules.home-manager
         inputs.nixvim.nixDarwinModules.nixvim
-        inputs.nix-homebrew.darwinModules.nix-homebrew
       ];
     };
 
