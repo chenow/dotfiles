@@ -1,7 +1,5 @@
 {
   pkgs,
-  lib,
-  config,
   user,
   inputs,
   ...
@@ -9,6 +7,13 @@
   imports = [
     ../shared
   ];
+
+  environment.systemPackages = [
+    pkgs.nixd
+    pkgs.alejandra
+  ];
+
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   home-manager = {
     useGlobalPkgs = true;

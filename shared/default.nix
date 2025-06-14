@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  user,
-  ...
-}: {
+{user, ...}: {
   imports = [
     ./generic.nix
     ./neovim.nix

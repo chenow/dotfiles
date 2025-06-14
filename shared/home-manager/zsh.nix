@@ -1,9 +1,4 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   config.programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;

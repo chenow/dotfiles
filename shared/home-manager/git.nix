@@ -1,6 +1,5 @@
 {pkgs, ...}: let
   name = "Antoine Chéneau";
-  user = "chenow";
   email = "antoine.cheneau@outlook.com";
 in {
   programs.git = {

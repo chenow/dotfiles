@@ -1,10 +1,4 @@
-{
-  pkgs,
-  config,
-  lib,
-  user,
-  ...
-}: {
+{user, ...}: {
   config.environment.variables = {
     TERMINAL = "wezterm";
     EDITOR = "nvim";

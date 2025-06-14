@@ -53,21 +53,11 @@
     darwin,
     home-manager,
     nixpkgs,
-    nixpkgs-darwin,
     nixpkgs-nixos,
     systems,
     ...
   } @ inputs: let
     user = "chenow";
-    linuxSystems = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
-    darwinSystems = [
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
-    forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
     eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
     treefmtConfig = import ./treefmt.nix;
   in
@@ -86,7 +76,7 @@
       };
 
       nixosConfigurations = {
-        nixos = nixpkgs-nixos.lib.nixosSystem rec {
+        nixos = nixpkgs-nixos.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs user;
