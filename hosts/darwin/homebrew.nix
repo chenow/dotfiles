@@ -10,7 +10,6 @@
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
       "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
-      "nikitabobko/tap" = inputs.aerospace-tap;
     };
     mutableTaps = false;
     autoMigrate = true;
@@ -25,7 +24,6 @@
       "docker"
       "visual-studio-code"
       "wezterm"
-      "aerospace"
       "unetbootin"
 
       # Communication Tools
