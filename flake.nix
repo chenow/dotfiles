@@ -23,10 +23,14 @@
     self,
     nix-darwin,
     nixpkgs,
+    systems,
     ...
   } @ inputs: let
     user = "chenow";
     treefmtConfig = import ./treefmt.nix;
+
+    eachSystem = nixpkgs.lib.genAttrs (import systems);
+    makeFormatter = system: inputs.treefmt-nix.lib.mkWrapper (nixpkgs.legacyPackages.${system}) treefmtConfig;
   in {
     # MacOS configuration
     darwinConfigurations."MacBook-Pro-de-Antoine" = nix-darwin.lib.darwinSystem {
@@ -42,9 +46,6 @@
     };
 
     # Formatters configuration
-    formatter = {
-      aarch64-darwin.default = inputs.treefmt-nix.lib.mkWrapper (nixpkgs.legacyPackages.aarch64-darwin) treefmtConfig;
-      x86_64-linux.default = inputs.treefmt-nix.lib.mkWrapper (nixpkgs.legacyPackages.x86_64-linux) treefmtConfig;
-    };
+    formatter = eachSystem (system: makeFormatter system);
   };
 }
