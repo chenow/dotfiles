@@ -1,15 +1,7 @@
-{...}: {
+{config, ...}: {
   programs.fzf = {
     enable = true;
-    enableZshIntegration = true;
+    enableZshIntegration = config.zsh.enable;
   };
   xdg.enable = true;
-
-  programs.vscode = {
-    enable = true;
-  };
-
-  programs.ssh = {
-    enable = true;
-  };
 }

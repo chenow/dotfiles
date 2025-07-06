@@ -1,5 +1,23 @@
-{config, ...}: {
-  programs.zsh = {
+{
+  config,
+  lib,
+  ...
+}: {
+  options.zsh = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable Zsh in terminal.";
+    };
+
+    theme = lib.mkOption {
+      type = lib.types.str;
+      default = "robbyrussell";
+      description = "Zsh theme to use.";
+    };
+  };
+
+  config.programs.zsh = lib.mkIf config.zsh.enable {
     enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
@@ -12,21 +30,10 @@
         "macos"
         "brew"
       ];
-      theme = "robbyrussell";
+      theme = config.zsh.theme;
     };
     initContent = ''
       echo "Welcome to Oh My Zsh managed by Home Manager!"
     '';
-  };
-
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
-    silent = true;
-    nix-direnv.enable = true;
-    config = {
-      global.hide_env_diff = true;
-      whitelist.prefix = ["${config.home.homeDirectory}"];
-    };
   };
 }
