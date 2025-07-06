@@ -1,8 +1,8 @@
 {...}: {
   imports = [
-    ./zsh.nix
+    ./additional.nix
     ./git.nix
     ./wezterm.nix
-    ./additional.nix
+    ./zsh.nix
   ];
 }

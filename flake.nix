@@ -2,6 +2,9 @@
   description = "My MacOS configuration using Nix";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    systems = {
+      url = "github:nix-systems/default";
+    };
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,33 +22,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = {
-    self,
-    nix-darwin,
-    nixpkgs,
-    systems,
-    ...
-  } @ inputs: let
+  outputs = {self, ...} @ inputs: let
     user = "chenow";
     treefmtConfig = import ./treefmt.nix;
-
-    eachSystem = nixpkgs.lib.genAttrs (import systems);
-    makeFormatter = system: inputs.treefmt-nix.lib.mkWrapper (nixpkgs.legacyPackages.${system}) treefmtConfig;
   in {
     # MacOS configuration
-    darwinConfigurations."MacBook-Pro-de-Antoine" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."MacBook-Pro-de-Antoine" = self.lib.darwin.mkDarwinSystem {
       system = "aarch64-darwin";
+      modules = [./hosts/MacBook-Pro-de-Antoine];
       specialArgs = {
         inherit self inputs user;
       };
-      modules = [
-        ./hosts/darwin
-        inputs.home-manager.darwinModules.home-manager
-        inputs.nixvim.nixDarwinModules.nixvim
-      ];
+    };
+
+    # Exposes lib to external flakes
+    lib = import ./lib {
+      inherit inputs;
     };
 
     # Formatters configuration
-    formatter = eachSystem (system: makeFormatter system);
+    formatter = self.lib.eachSystem (system: self.lib.makeFormatter system treefmtConfig);
   };
 }

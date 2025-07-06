@@ -1,5 +1,5 @@
 {config, ...}: {
-  config.programs.zsh = {
+  programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
@@ -10,7 +10,6 @@
         "git"
         "docker"
         "macos"
-        "direnv"
         "brew"
       ];
       theme = "robbyrussell";
@@ -20,7 +19,7 @@
     '';
   };
 
-  config.programs.direnv = {
+  programs.direnv = {
     enable = true;
     enableZshIntegration = true;
     silent = true;
