@@ -17,6 +17,7 @@
             inputs.home-manager.darwinModules.home-manager
             ../modules/darwin
             ../modules/home.nix
+            ../modules/lib
           ]
           ++ modules;
       };

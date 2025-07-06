@@ -1,5 +1,5 @@
-{user, ...}: {
-  home-manager.users.${user}.git.profile = {
+{...}: {
+  userConfig.git.profile = {
     name = "Antoine Chéneau";
     email = "antoine.cheneau@outlook.com";
   };
