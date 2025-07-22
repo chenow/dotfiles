@@ -6,7 +6,6 @@
     fzf
     firebase-tools
     ngrok
-    awscli2
     google-cloud-sdk
     google-cloud-sql-proxy
 
@@ -19,5 +18,6 @@
 
     # Media-related packages
     htop
+    rectangle
   ];
 }

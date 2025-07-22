@@ -29,6 +29,7 @@
         "docker"
         "macos"
         "brew"
+        "aws"
       ];
       theme = config.zsh.theme;
     };

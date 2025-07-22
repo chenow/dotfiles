@@ -10,5 +10,6 @@
     zsh.enable = true;
     vscode.enable = true;
     direnv.enable = true;
+    awscli.enable = true;
   };
 }
