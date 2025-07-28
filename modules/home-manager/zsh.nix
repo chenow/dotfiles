@@ -15,6 +15,12 @@
       default = "robbyrussell";
       description = "Zsh theme to use.";
     };
+
+    initContent = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+      description = "Content to add to the zshrc file.";
+    };
   };
 
   config.programs.zsh = lib.mkIf config.zsh.enable {
@@ -35,6 +41,7 @@
     };
     initContent = ''
       echo "Welcome to Oh My Zsh managed by Home Manager!"
+      ${config.zsh.initContent}
     '';
   };
 }

@@ -17,9 +17,24 @@
             inputs.home-manager.darwinModules.home-manager
             ../modules/darwin
             ../modules/home.nix
-            ../modules/lib
+            ../profiles
           ]
           ++ modules;
       };
   };
+  homeManagerConfiguration = {
+    modules,
+    pkgs,
+    extraSpecialArgs ? {},
+  }:
+    inputs.home-manager.lib.homeManagerConfiguration {
+      inherit extraSpecialArgs pkgs;
+      modules =
+        [
+          inputs.nixvim.homeModules.nixvim
+          ../modules/home-manager
+          ../profiles
+        ]
+        ++ modules;
+    };
 }

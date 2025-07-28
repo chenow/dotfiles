@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [
+    ./lib
     ./generic.nix
     ./homebrew.nix
     ./neovim.nix

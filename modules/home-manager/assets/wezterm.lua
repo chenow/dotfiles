@@ -12,9 +12,25 @@ config.hide_mouse_cursor_when_typing = false
 
 config.keys = {
 	{ key = "L", mods = "ALT|SHIFT", action = wezterm.action({ SendString = "|" }) },
-	{ key = "%", mods = "CTRL|SHIFT|ALT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "£", mods = "CTRL|SHIFT|ALT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{
+		key = "%",
+		mods = "CTRL|SHIFT|ALT",
+		action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		key = "£",
+		mods = "CTRL|SHIFT|ALT",
+		action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
 	{ key = "n", mods = "ALT", action = wezterm.action({ SendString = "~" }) },
+	{
+		key = "LeftArrow",
+		mods = "OPT",
+		action = wezterm.action({ SendString = "\x1bb" }),
+	}, -- Make Option-Right equivalent to Alt-f; forward-word
+	{
+		key = "RightArrow",
+		mods = "OPT",
+		action = wezterm.action({ SendString = "\x1bf" }),
+	},
 }
-
-return config
