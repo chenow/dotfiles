@@ -17,6 +17,7 @@
             inputs.home-manager.darwinModules.home-manager
             ../modules/darwin
             ../modules/home.nix
+            ../modules/vim
             ../profiles
           ]
           ++ modules;
@@ -28,11 +29,13 @@
     extraSpecialArgs ? {},
   }:
     inputs.home-manager.lib.homeManagerConfiguration {
-      inherit extraSpecialArgs pkgs;
+      inherit pkgs;
+      extraSpecialArgs = extraSpecialArgs // {inherit inputs;};
       modules =
         [
           inputs.nixvim.homeModules.nixvim
           ../modules/home-manager
+          ../modules/vim
           ../profiles
         ]
         ++ modules;
