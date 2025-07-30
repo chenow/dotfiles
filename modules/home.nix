@@ -1,6 +1,13 @@
-{user, ...}: {
-  config = {
-    home-manager.users.${user} = import ./home-manager;
-    home-manager.backupFileExtension = "hm-bak";
+{
+  user,
+  host,
+  ...
+}: {
+  home-manager = {
+    users.${user} = import ./home-manager;
+    backupFileExtension = "hm-bak";
+    extraSpecialArgs = {
+      inherit host;
+    };
   };
 }

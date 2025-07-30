@@ -11,28 +11,28 @@
 
   config = lib.mkIf config.profiles.base.enable {
     # Enable core home-manager functionality
-    git.enable = true;
-    zsh.enable = true;
-    ssh.enable = true;
-    direnv.enable = true;
+    userConfig = {
+      git.enable = true;
+      zsh.enable = true;
+      ssh.enable = true;
+      direnv.enable = true;
+      wezterm.enable = true;
+      dotfiles.enable = true;
+    };
 
     # Core packages that every host needs
-    home.packages = with pkgs; [
+    userConfig.home.packages = with pkgs; [
       fastfetch
       eza
       htop
     ];
 
     # Common shell aliases
-    programs.zsh.shellAliases = {
+    userConfig.programs.zsh.shellAliases = {
       ll = "eza -la";
       la = "eza -la";
       ls = "eza";
       tree = "eza --tree";
     };
-
-    # Install wezterm
-    wezterm.enable = true;
-    dotfiles.enable = true;
   };
 }

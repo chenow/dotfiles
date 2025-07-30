@@ -9,7 +9,7 @@
     enable = lib.mkEnableOption "Setup dotfiles repository locally.";
     git-url = lib.mkOption {
       type = lib.types.str;
-      default = "ssh://git.amazon.com:2222/pkg/ACheneauDotfiles";
+      default = "git@github.com:chenow/dotfiles.git";
       description = "URL of the dotfiles repository.";
     };
     dir-path = lib.mkOption {
@@ -35,10 +35,10 @@
       DOTFILES = "${config.dotfiles.dir-path}";
     };
 
-    home.activation.dotfiles = lib.hm.dag.entryAfter ["installPackages"] ''
+    home.activation.dotfiles = lib.hm.dag.entryAfter ["generateGithubSshKey"] ''
       if [ ! -d "${config.dotfiles.dir-path}" ]; then
         mkdir -p "${config.dotfiles.dir-path}"
-        ${pkgs.git}/bin/git clone "${config.dotfiles.git-url}" "${config.dotfiles.dir-path}"
+        PATH="${pkgs.openssh}/bin:$PATH" ${pkgs.git}/bin/git clone "${config.dotfiles.git-url}" "${config.dotfiles.dir-path}"
         printf "Cloned dotfiles repository at ${config.dotfiles.dir-path}\n"
       fi
     '';

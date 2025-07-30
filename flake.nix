@@ -32,6 +32,7 @@
       modules = [./hosts/MacBook-Pro-de-Antoine];
       specialArgs = {
         inherit self inputs user;
+        host = "MacBook-Pro-de-Antoine";
       };
     };
 

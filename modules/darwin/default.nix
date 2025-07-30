@@ -8,7 +8,6 @@
     ./lib
     ./generic.nix
     ./homebrew.nix
-    ./neovim.nix
     ./packages.nix
     ./shell.nix
     ./system.nix

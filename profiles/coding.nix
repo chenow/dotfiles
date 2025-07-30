@@ -10,7 +10,7 @@
 
   config = lib.mkIf config.profiles.coding.enable {
     # Development packages
-    home.packages = with pkgs; [
+    userConfig.home.packages = with pkgs; [
       # Core development tools
       nodejs
       python313Full
