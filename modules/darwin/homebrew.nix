@@ -19,6 +19,7 @@ in {
       "visual-studio-code"
       "wezterm"
       "unetbootin"
+      "rectangle"
 
       # Communication Tools
       "slack"

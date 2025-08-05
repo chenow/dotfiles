@@ -27,6 +27,7 @@
 
     programs.zsh.shellAliases = {
       user-up = "home-manager switch --flake \"${config.dotfiles.dir-path}#${host}\"";
+      system-up = "sudo darwin-rebuild switch --flake \"${config.dotfiles.dir-path}#${host}\"";
       cdd = "cd ${config.dotfiles.dir-path}";
     };
 

@@ -8,8 +8,6 @@
     ./lib
     ./generic.nix
     ./homebrew.nix
-    ./packages.nix
-    ./shell.nix
     ./system.nix
     ./user.nix
   ];
