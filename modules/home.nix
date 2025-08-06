@@ -4,7 +4,7 @@
   ...
 }: {
   home-manager = {
-    users.${user} = import ./home-manager;
+    users.${user} = ./home-manager;
     backupFileExtension = "hm-bak";
     extraSpecialArgs = {
       inherit host;

@@ -4,7 +4,7 @@
     coding.enable = true;
   };
 
-  userConfig = {
+  config = {
     git.profile = {
       name = "Antoine Chéneau";
       email = "antoine.cheneau@outlook.com";
