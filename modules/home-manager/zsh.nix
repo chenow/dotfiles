@@ -21,6 +21,11 @@
       default = "";
       description = "Content to add to the zshrc file.";
     };
+    shellAliases = lib.mkOption {
+      type = lib.types.attrsOf lib.types.str;
+      default = {};
+      description = "Extra Zsh shell aliases to add (syntactic sugar for programs.zsh.shellAliases).";
+    };
   };
 
   config.programs.zsh = lib.mkIf config.zsh.enable {
@@ -43,5 +48,6 @@
       echo "Welcome to Oh My Zsh managed by Home Manager!"
       ${config.zsh.initContent}
     '';
+    shellAliases = config.zsh.shellAliases;
   };
 }

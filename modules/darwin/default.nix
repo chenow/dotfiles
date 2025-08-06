@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./lib
     ./generic.nix
     ./homebrew.nix
     ./system.nix

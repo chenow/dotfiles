@@ -4,7 +4,7 @@
   user,
   ...
 }: {
-  userConfig.home.packages = with pkgs; [
+  home.packages = with pkgs; [
     # for telescope
     ripgrep
     fd
@@ -12,14 +12,14 @@
     # for nvim-sitter
     tree-sitter
   ];
-  userConfig.home.file.".config/lazygit/config.yml".text = ''
+  home.file.".config/lazygit/config.yml".text = ''
     git:
       paging:
         colorArg: always
         # useConfig: true
   ''; # TODO: set useConfig to true
 
-  userConfig.programs.zsh.shellAliases = {
+  zsh.shellAliases = {
     v = "nvim";
   };
 
@@ -98,7 +98,7 @@
         enable = true;
         openOnSetup = true;
         openOnSetupFile = true;
-        renderer.rootFolderLabel = false;
+        settings = {renderer.root_folder_label = false;};
       };
 
       gitsigns = {
@@ -181,7 +181,7 @@
     '';
   };
 
-  userConfig.home.sessionVariables = {
+  home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
     JDTLS_JVM_ARGS = "-javaagent:${pkgs.lombok}/share/java/lombok.jar";
