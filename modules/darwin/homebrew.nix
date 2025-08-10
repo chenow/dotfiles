@@ -6,7 +6,7 @@
 in {
   homebrew = {
     enable = true;
-    global.autoUpdate = false;
+    global.autoUpdate = true;
     onActivation = {
       autoUpdate = true;
       cleanup = "zap";
