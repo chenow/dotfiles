@@ -31,7 +31,7 @@
       la = "eza -la";
       ls = "eza";
       tree = "eza --tree";
-      shell = "docker compose up --rm shell";
+      shell = "docker compose run --rm shell";
     };
   };
 }
