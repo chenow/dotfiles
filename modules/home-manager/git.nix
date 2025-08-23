@@ -74,7 +74,12 @@
       };
     };
 
+    programs.zsh.sessionVariables = {
+      GITREPOS = "${config.home.homeDirectory}/git";
+    };
+
     programs.zsh.shellAliases = {
+      cdg = "cd ${config.programs.zsh.sessionVariables.GITREPOS}";
       gck = "git checkout";
       gp = "git push";
       gl = "git pull";

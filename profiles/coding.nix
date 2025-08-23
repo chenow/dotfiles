@@ -15,6 +15,8 @@
       nodejs
       python313Full
       uv
+      terraform
+      awscli2
     ];
   };
 }

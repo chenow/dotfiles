@@ -16,15 +16,9 @@ in {
     casks = setAsGreedyCasks [
       # Development Tools
       "docker"
-      "visual-studio-code"
-      "wezterm"
       "unetbootin"
-      "rectangle"
 
-      # Communication Tools
-      "slack"
-      "telegram"
-      "zoom"
+      # Messaging
       "whatsapp"
 
       # Microsoft suite
@@ -37,9 +31,6 @@ in {
 
       # Browsers
       "arc"
-
-      # Notes
-      "obsidian"
     ];
     caskArgs.no_quarantine = true;
   };

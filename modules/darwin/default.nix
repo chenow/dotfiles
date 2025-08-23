@@ -9,6 +9,7 @@
     ./homebrew.nix
     ./system.nix
     ./user.nix
+    ./apps.nix
   ];
 
   environment.systemPackages = [

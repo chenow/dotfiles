@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   config = {
     profiles = {
       base.enable = true;
@@ -8,7 +8,7 @@
       name = "Antoine Chéneau";
       email = "antoine.cheneau@outlook.com";
     };
-
+    environment.systemPackages = with pkgs; [amazon-q-cli raycast];
     vscode.enable = true;
     awscli = {
       enable = true;
@@ -19,7 +19,7 @@
         }
         {
           name = "trophenix";
-          accountId = "857360183350";
+          accountId = "427609183967";
           region = "eu-west-3";
         }
       ];
