@@ -35,6 +35,11 @@ in {
               description = "Default region for this profile.";
               default = "eu-west-1";
             };
+            ssoStartUrl = lib.mkOption {
+              type = str;
+              description = "The URL that your organization uses to access the AWS SSO user portal.";
+              default = "https://d-9367a61fa9.awsapps.com/start/#";
+            };
           };
         });
       default = [];
@@ -68,8 +73,8 @@ in {
             {
               name = "sso-session ${acct.name}";
               value = {
-                sso_start_url = "https://d-9367a61fa9.awsapps.com/start/#";
-                sso_region = "eu-west-1";
+                sso_start_url = acct.ssoStartUrl;
+                sso_region = acct.region;
                 sso_registration_scopes = "sso:account:access";
               };
             }
