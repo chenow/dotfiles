@@ -1,3 +1,6 @@
 {...}: {
-  imports = [./base.nix ./coding.nix];
+  imports = [
+    ./base.nix
+    ./personal.nix
+  ];
 }

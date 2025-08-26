@@ -2,7 +2,7 @@
   config = {
     profiles = {
       base.enable = true;
-      coding.enable = true;
+      personal.enable = true;
     };
     git.profile = {
       name = "Antoine Chéneau";
