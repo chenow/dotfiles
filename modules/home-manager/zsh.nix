@@ -26,6 +26,12 @@
       default = {};
       description = "Extra Zsh shell aliases to add (syntactic sugar for programs.zsh.shellAliases).";
     };
+
+    completions = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [];
+      description = "List of additional completion scripts to enable.";
+    };
   };
 
   config.programs.zsh = lib.mkIf config.zsh.enable {
@@ -35,13 +41,14 @@
     autosuggestion.enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [
-        "git"
-        "docker"
-        "macos"
-        "brew"
-        "aws"
-      ];
+      plugins =
+        [
+          "git"
+          "docker"
+          "macos"
+          "brew"
+        ]
+        ++ config.zsh.completions;
       theme = config.zsh.theme;
     };
     initContent = ''

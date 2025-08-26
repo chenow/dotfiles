@@ -16,5 +16,7 @@
       python313Full
       uv
     ];
+
+    zsh.completions = ["bun" "terraform" "python" "aws" "uv"];
   };
 }
