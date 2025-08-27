@@ -23,6 +23,9 @@
       fastfetch
       eza
       htop
+      bat
+      fd
+      ripgrep
     ];
 
     # Common shell aliases
