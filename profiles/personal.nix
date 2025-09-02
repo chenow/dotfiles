@@ -15,6 +15,7 @@
       awscli2
       python313Full
       uv
+      postgresql
     ];
 
     zsh.completions = ["bun" "terraform" "python" "aws" "uv"];
