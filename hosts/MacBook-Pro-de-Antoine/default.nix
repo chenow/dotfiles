@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   config = {
     profiles = {
       base.enable = true;
@@ -8,8 +8,6 @@
       name = "Antoine Chéneau";
       email = "antoine.cheneau@outlook.com";
     };
-    environment.systemPackages = with pkgs; [amazon-q-cli raycast];
-    vscode.enable = true;
     awscli = {
       enable = true;
       accounts = [

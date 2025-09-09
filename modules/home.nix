@@ -18,6 +18,7 @@
     (lib.mkAliasOptionModule ["git"] ["home-manager" "users" user "git"])
     (lib.mkAliasOptionModule ["wezterm"] ["home-manager" "users" user "wezterm"])
     (lib.mkAliasOptionModule ["home"] ["home-manager" "users" user "home"])
+    (lib.mkAliasOptionModule ["ia-chat"] ["home-manager" "users" user "ia-chat"])
   ];
 
   home-manager = {

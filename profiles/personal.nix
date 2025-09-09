@@ -18,6 +18,8 @@
       postgresql
     ];
 
+    ia-chat.enable = true;
+
     zsh.completions = ["bun" "terraform" "python" "aws" "uv"];
   };
 }

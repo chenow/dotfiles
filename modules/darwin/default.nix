@@ -1,9 +1,4 @@
-{
-  pkgs,
-  inputs,
-  user,
-  ...
-}: {
+{...}: {
   imports = [
     ./generic.nix
     ./homebrew.nix
@@ -11,13 +6,4 @@
     ./user.nix
     ./apps.nix
   ];
-
-  environment.systemPackages = [
-    pkgs.nixd
-    pkgs.alejandra
-  ];
-
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-
-  system.primaryUser = user;
 }

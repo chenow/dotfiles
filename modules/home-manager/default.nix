@@ -5,8 +5,8 @@
     ./direnv.nix
     ./dotfiles.nix
     ./git.nix
+    ./ia-chat.nix
     ./ssh.nix
-    ./vscode.nix
     ./wezterm.nix
     ./zsh.nix
   ];

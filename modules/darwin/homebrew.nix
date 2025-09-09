@@ -6,7 +6,8 @@
 in {
   homebrew = {
     enable = true;
-    global.autoUpdate = true;
+    global.autoUpdate = false;
+    greedyCasks = true;
     onActivation = {
       autoUpdate = true;
       cleanup = "zap";
@@ -17,6 +18,7 @@ in {
       # Development Tools
       "docker"
       "unetbootin"
+      "visual-studio-code"
 
       # Messaging
       "whatsapp"
@@ -31,6 +33,7 @@ in {
 
       # Browsers
       "arc"
+      "raycast"
     ];
     caskArgs.no_quarantine = true;
   };

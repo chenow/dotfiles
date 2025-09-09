@@ -3,6 +3,7 @@
   pkgs,
   config,
   host,
+  inputs,
   ...
 }: {
   options.dotfiles = {
@@ -24,6 +25,8 @@
       nixd
       alejandra
     ];
+
+    nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
     programs.zsh.shellAliases = {
       user-up = "home-manager switch --flake \"${config.dotfiles.dir-path}#${host}\"";
