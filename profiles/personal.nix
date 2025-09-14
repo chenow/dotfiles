@@ -19,7 +19,11 @@
     ];
 
     ia-chat.enable = true;
+    hammerspoon.enable = true;
 
     zsh.completions = ["bun" "terraform" "python" "aws" "uv"];
+    home.sessionVariables = {
+      DRIVE = "/Users/chenow/Library/Mobile Documents/com~apple~CloudDocs";
+    };
   };
 }

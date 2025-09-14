@@ -20,6 +20,8 @@ in {
       "unetbootin"
       "visual-studio-code"
       "amazon-q"
+      "hammerspoon"
+      "figma"
 
       # Messaging
       "whatsapp"
