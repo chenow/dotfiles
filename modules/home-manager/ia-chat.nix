@@ -10,19 +10,30 @@
 
   config = lib.mkIf config.ia-chat.enable {
     home.packages = with pkgs; [
-      amazon-q-cli
       nodejs
+      uv
+      docker
+      python313
+      python313Packages.fastmcp
     ];
 
     zsh.shellAliases = {
-      q = "amazon-q";
-      q-read = "amazon-q chat --agent read-only-agent";
-      q-full = "amazon-q chat --agent full-agent";
+      q-personal = "q chat --agent personal-agent";
+      q-code = "q chat --agent coding-agent";
+      q-aws = "q chat --agent aws-agent";
     };
 
     home.file.".aws/amazonq/cli-agents" = {
       source = ./assets/q-cli-agents;
       recursive = true;
     };
+    home.file.".aws/amazonq/ressources" = {
+      source = ./assets/ressources;
+      recursive = true;
+    };
+
+    programs.zsh.initContent = ''
+      . ${config.home.homeDirectory}/secrets/load-secrets.sh
+    '';
   };
 }

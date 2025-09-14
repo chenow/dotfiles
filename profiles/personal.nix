@@ -11,10 +11,10 @@
   config = lib.mkIf config.profiles.personal.enable {
     home.packages = with pkgs; [
       bun
+      uv
       terraform
       awscli2
-      python313Full
-      uv
+      python313
       postgresql
     ];
 
