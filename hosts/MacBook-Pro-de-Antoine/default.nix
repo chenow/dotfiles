@@ -4,6 +4,7 @@
       base.enable = true;
       personal.enable = true;
     };
+    hammerspoon.enable = true;
     git.profile = {
       name = "Antoine Chéneau";
       email = "antoine.cheneau@outlook.com";
