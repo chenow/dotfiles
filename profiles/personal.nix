@@ -16,6 +16,7 @@
       awscli2
       python313
       postgresql
+      firebase-tools
     ];
 
     ia-chat.enable = true;

@@ -46,10 +46,10 @@
     ],
     "toolsSettings": {
         "execute_bash": {
-            "allowReadOnly": true
+            "autoAllowReadonly": true
         },
         "use_aws": {
-            "allowReadOnly": true
+            "autoAllowReadonly": true
         },
         "fs_write": {
             "allowedPaths": [

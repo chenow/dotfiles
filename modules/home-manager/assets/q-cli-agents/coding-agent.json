@@ -21,6 +21,13 @@
                 "-y",
                 "@upstash/context7-mcp"
             ]
+        },
+        "shadcn": {
+            "command": "npx",
+            "args": [
+                "shadcn@latest",
+                "mcp"
+            ]
         }
     },
     "tools": [
@@ -30,18 +37,25 @@
         "fs_read",
         "knowledge",
         "thinking",
-        "@apple-tools-mcp",
         "@context7",
         "@github/search_code",
         "@github/get_file_contents",
-        "@github/search_repositories"
+        "@github/search_repositories",
+        "@shadcn"
     ],
     "toolsSettings": {
         "execute_bash": {
-            "allowReadOnly": true
+            "autoAllowReadonly": true,
+            "allowedCommands": [
+                "mkdir .*,",
+                "bun run format",
+                "bun run lint",
+                "bun run ts-check",
+                "bunx shadcn@latest .*"
+            ]
         },
         "use_aws": {
-            "allowReadOnly": true
+            "autoAllowReadonly": true
         },
         "fs_write": {
             "allowedPaths": [
@@ -50,6 +64,7 @@
         }
     },
     "resources": [
-        "file:///Users/chenow/.aws/amazonq/ressources/context.md"
+        "file:///Users/chenow/.aws/amazonq/ressources/context.md",
+        "file:///Users/chenow/git/galipet/docs/context.md"
     ]
 }

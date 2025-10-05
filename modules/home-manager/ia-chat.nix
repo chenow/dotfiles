@@ -15,6 +15,7 @@
       docker
       python313
       python313Packages.fastmcp
+      claude-code
     ];
 
     zsh.shellAliases = {
