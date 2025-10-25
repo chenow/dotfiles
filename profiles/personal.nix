@@ -14,7 +14,7 @@
       awscli2
       python3
       postgresql
-      firebase-tools
+      # firebase-tools
       supabase-cli
     ];
 

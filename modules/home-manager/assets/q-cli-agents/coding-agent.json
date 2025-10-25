@@ -22,6 +22,13 @@
                 "@upstash/context7-mcp"
             ]
         },
+        "nextjs-devtools": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "next-devtools-mcp@latest"
+            ]
+        },
         "shadcn": {
             "command": "npx",
             "args": [
@@ -31,17 +38,23 @@
         }
     },
     "tools": [
-        "*"
-    ],
-    "allowedTools": [
+        "execute_bash",
+        "use_aws",
+        "fs_write",
         "fs_read",
-        "knowledge",
-        "thinking",
         "@context7",
         "@github/search_code",
         "@github/get_file_contents",
         "@github/search_repositories",
-        "@shadcn"
+        "@shadcn",
+        "@nextjs-devtools/nextjs_docs",
+        "@nextjs-devtools/nextjs_runtime"
+    ],
+    "allowedTools": [
+        "@context7",
+        "@github",
+        "@shadcn",
+        "@nextjs-devtools"
     ],
     "toolsSettings": {
         "execute_bash": {
@@ -63,7 +76,6 @@
         }
     },
     "resources": [
-        "file:///Users/chenow/.aws/amazonq/ressources/context.md",
-        "file:///Users/chenow/git/galipet/docs/context.md"
+        "file:///Users/chenow/.aws/amazonq/ressources/coding.md"
     ]
 }
