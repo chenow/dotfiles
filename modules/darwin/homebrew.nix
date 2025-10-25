@@ -21,6 +21,7 @@ in {
       "visual-studio-code"
       "hammerspoon"
       "figma"
+      "telegram-desktop"
 
       # Messaging
       "whatsapp"

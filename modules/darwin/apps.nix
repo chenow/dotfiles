@@ -4,7 +4,6 @@
     raycast
     slack
     rectangle
-    telegram-desktop
     zoom-us
     obsidian
   ];
