@@ -19,7 +19,6 @@ in {
       "docker"
       "unetbootin"
       "visual-studio-code"
-      "amazon-q"
       "hammerspoon"
       "figma"
 

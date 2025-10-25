@@ -11,9 +11,11 @@
   config = lib.mkIf config.profiles.personal.enable {
     home.packages = with pkgs; [
       terraform
-      python313
+      awscli2
+      python3
       postgresql
       firebase-tools
+      supabase-cli
     ];
 
     programs.pgcli.enable = true;

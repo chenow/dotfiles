@@ -47,11 +47,10 @@
         "execute_bash": {
             "autoAllowReadonly": true,
             "allowedCommands": [
-                "mkdir .*,",
-                "bun run format",
-                "bun run lint",
-                "bun run ts-check",
-                "bunx shadcn@latest .*"
+                "mkdir .*",
+                "cd .* && bun run format",
+                "cd .* && bun run ts-check",
+                "cd .* && bunx shadcn@latest .*"
             ]
         },
         "use_aws": {

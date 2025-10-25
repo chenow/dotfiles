@@ -16,9 +16,11 @@
       python313
       python313Packages.fastmcp
       claude-code
+      amazon-q-cli
     ];
 
     zsh.shellAliases = {
+      q = "amazon-q";
       q-personal = "q chat --agent personal-agent";
       q-code = "q chat --agent coding-agent";
       q-aws = "q chat --agent aws-agent";
