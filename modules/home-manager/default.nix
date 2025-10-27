@@ -7,6 +7,7 @@
     ./git.nix
     ./ia-chat.nix
     ./ssh.nix
+    ./television.nix
     ./wezterm.nix
     ./zsh.nix
   ];

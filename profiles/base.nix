@@ -17,6 +17,7 @@
     direnv.enable = true;
     dotfiles.enable = true;
     wezterm.enable = true;
+    programs.television.enable = true;
 
     # Core packages that every host needs
     programs.fastfetch.enable = true;
