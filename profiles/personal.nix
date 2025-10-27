@@ -10,14 +10,15 @@
 
   config = lib.mkIf config.profiles.personal.enable {
     home.packages = with pkgs; [
-      bun
-      uv
       terraform
-      awscli2
       python313
       postgresql
       firebase-tools
     ];
+
+    programs.pgcli.enable = true;
+    programs.bun.enable = true;
+    programs.uv.enable = true;
 
     ia-chat.enable = true;
 

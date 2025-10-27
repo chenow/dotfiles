@@ -19,18 +19,17 @@
     wezterm.enable = true;
 
     # Core packages that every host needs
-    home.packages = with pkgs; [
-      fastfetch
-      eza
-      htop
-      bat
-      fd
-      ripgrep
-    ];
+    programs.fastfetch.enable = true;
+    programs.fd.enable = true;
+    programs.eza.enable = true;
+    programs.htop.enable = true;
+    programs.bat.enable = true;
+    programs.ripgrep.enable = true;
+    programs.ripgrep-all.enable = true;
 
     # Common shell aliases
     zsh.shellAliases = {
-      ll = "eza -la";
+      ll = "${pkgs.eza}/bin/eza -la";
       la = "eza -la";
       ls = "eza";
       tree = "eza --tree";
