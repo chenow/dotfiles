@@ -17,6 +17,7 @@
       python313Packages.fastmcp
       claude-code
       amazon-q-cli
+      gemini-cli
     ];
 
     zsh.shellAliases = {
