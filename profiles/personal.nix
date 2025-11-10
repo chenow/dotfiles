@@ -11,18 +11,14 @@
   config = lib.mkIf config.profiles.personal.enable {
     home.packages = with pkgs; [
       terraform
-      awscli2
       python3
       postgresql
       # firebase-tools
       supabase-cli
     ];
 
-    programs.pgcli.enable = true;
-    programs.bun.enable = true;
-    programs.uv.enable = true;
-
     ia-chat.enable = true;
+    additional.enablePersonal = true;
 
     zsh.completions = ["bun" "terraform" "python" "aws" "uv"];
     home.sessionVariables = {

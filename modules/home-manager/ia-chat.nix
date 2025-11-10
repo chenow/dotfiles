@@ -11,7 +11,6 @@
   config = lib.mkIf config.ia-chat.enable {
     home.packages = with pkgs; [
       nodejs
-      uv
       docker
       python313
       python313Packages.fastmcp
@@ -19,6 +18,7 @@
       amazon-q-cli
       gemini-cli
     ];
+    programs.uv.enable = true;
 
     zsh.shellAliases = {
       q = "amazon-q";

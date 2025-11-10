@@ -9,6 +9,7 @@
   # standalone home-manager flakes (e.g. `awscli.enable = true;`).
   # Each alias maps `<name>` -> `home-manager.users.<user>.<name>`.
   imports = [
+    (lib.mkAliasOptionModule ["additional"] ["home-manager" "users" user "additional"])
     (lib.mkAliasOptionModule ["awscli"] ["home-manager" "users" user "awscli"])
     (lib.mkAliasOptionModule ["direnv"] ["home-manager" "users" user "direnv"])
     (lib.mkAliasOptionModule ["ssh"] ["home-manager" "users" user "ssh"])

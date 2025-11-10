@@ -17,16 +17,7 @@
     direnv.enable = true;
     dotfiles.enable = true;
     wezterm.enable = true;
-    programs.television.enable = true;
-
-    # Core packages that every host needs
-    programs.fastfetch.enable = true;
-    programs.fd.enable = true;
-    programs.eza.enable = true;
-    programs.htop.enable = true;
-    programs.bat.enable = true;
-    programs.ripgrep.enable = true;
-    programs.ripgrep-all.enable = true;
+    additional.enable = true;
 
     # Common shell aliases
     zsh.shellAliases = {
