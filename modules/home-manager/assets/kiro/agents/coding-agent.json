@@ -1,0 +1,81 @@
+{
+    "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
+    "name": "coding-agent",
+    "description": "An agent for software-design and coding purposes.",
+    "prompt": "You are a senior software engineer helping me browse documentation and generate code ready for usage.",
+    "mcpServers": {
+        "github": {
+            "command": "docker",
+            "args": [
+                "run",
+                "-i",
+                "--rm",
+                "--env-file",
+                "/Users/chenow/secrets/github-access-token.env",
+                "ghcr.io/github/github-mcp-server"
+            ]
+        },
+        "context7": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@upstash/context7-mcp"
+            ]
+        },
+        "nextjs-devtools": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "next-devtools-mcp@latest"
+            ]
+        },
+        "shadcn": {
+            "command": "npx",
+            "args": [
+                "shadcn@latest",
+                "mcp"
+            ]
+        }
+    },
+    "tools": [
+        "execute_bash",
+        "use_aws",
+        "fs_write",
+        "fs_read",
+        "@context7",
+        "@github/search_code",
+        "@github/get_file_contents",
+        "@github/search_repositories",
+        "@shadcn",
+        "@nextjs-devtools/nextjs_docs",
+        "@nextjs-devtools/nextjs_runtime"
+    ],
+    "allowedTools": [
+        "@context7",
+        "@github",
+        "@shadcn",
+        "@nextjs-devtools"
+    ],
+    "toolsSettings": {
+        "execute_bash": {
+            "autoAllowReadonly": true,
+            "allowedCommands": [
+                "mkdir .*",
+                "cd .* && bun run format",
+                "cd .* && bun run ts-check",
+                "cd .* && bunx shadcn@latest .*"
+            ]
+        },
+        "use_aws": {
+            "autoAllowReadonly": true
+        },
+        "fs_write": {
+            "allowedPaths": [
+                "~/git/"
+            ]
+        }
+    },
+    "resources": [
+        "file://~/.kiro/ressources/coding.md"
+    ]
+}

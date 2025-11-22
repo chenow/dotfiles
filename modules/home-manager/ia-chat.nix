@@ -13,27 +13,26 @@
       nodejs
       docker
       python313
+      uv
       python313Packages.fastmcp
-      claude-code
-      amazon-q-cli
-      gemini-cli
     ];
     programs.uv.enable = true;
 
-    zsh.shellAliases = {
-      q = "amazon-q";
-      q-personal = "q chat --agent personal-agent";
-      q-code = "q chat --agent coding-agent";
-      q-aws = "q chat --agent aws-agent";
+    home.file.".kiro/agents" = {
+      source = ./assets/kiro/agents;
+      recursive = true;
     };
 
-    home.file.".aws/amazonq/cli-agents" = {
-      source = ./assets/q-cli-agents;
+    home.file.".gemini/agents" = {
+      source = ./assets/gemini;
       recursive = true;
     };
-    home.file.".aws/amazonq/ressources" = {
-      source = ./assets/ressources;
-      recursive = true;
+
+    zsh.shellAliases = {
+      k = "kiro-cli";
+      k-code = "k chat --agent coding-agent";
+      k-aws = "k chat --agent aws-agent";
+      k-latex = "k chat --agent latex-agent";
     };
 
     programs.zsh.initContent = ''

@@ -11,7 +11,7 @@
                 "-i",
                 "--rm",
                 "--env-file",
-                "/Users/chenow/secrets/github-access-token.env",
+                "~/secrets/github-access-token.env",
                 "ghcr.io/github/github-mcp-server"
             ]
         },
@@ -53,11 +53,11 @@
         },
         "fs_write": {
             "allowedPaths": [
-                "/Users/chenow/git/"
+                "~/git/"
             ]
         }
     },
     "resources": [
-        "file:///Users/chenow/.aws/amazonq/ressources/context.md"
+        "file://~/.kiro/ressources/context.md"
     ]
 }

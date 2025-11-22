@@ -1,8 +1,8 @@
 {
     "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
-    "name": "coding-agent",
-    "description": "An agent for software-design and coding purposes.",
-    "prompt": "You are a senior software engineer helping me browse documentation and generate code ready for usage.",
+    "name": "latex-agent",
+    "description": "An agent for LaTeX document generation and management purposes.",
+    "prompt": "You are an expert LaTeX developer helping me create and manage LaTeX documents efficiently.",
     "mcpServers": {
         "github": {
             "command": "docker",
@@ -22,60 +22,47 @@
                 "@upstash/context7-mcp"
             ]
         },
-        "nextjs-devtools": {
-            "command": "npx",
+        "arxiv-latex-mcp": {
+            "command": "uv",
             "args": [
-                "-y",
-                "next-devtools-mcp@latest"
-            ]
-        },
-        "shadcn": {
-            "command": "npx",
-            "args": [
-                "shadcn@latest",
-                "mcp"
+                "--directory",
+                "/Users/chenow/git/arxiv-latex-mcp",
+                "run",
+                "server/main.py"
             ]
         }
     },
     "tools": [
-        "execute_bash",
-        "use_aws",
-        "fs_write",
         "fs_read",
+        "fs_write",
+        "execute_bash",
+        "introspect",
         "@context7",
+        "@arxiv-latex-mcp",
         "@github/search_code",
         "@github/get_file_contents",
-        "@github/search_repositories",
-        "@shadcn",
-        "@nextjs-devtools/nextjs_docs",
-        "@nextjs-devtools/nextjs_runtime"
+        "@github/search_repositories"
     ],
     "allowedTools": [
         "@context7",
         "@github",
-        "@shadcn",
-        "@nextjs-devtools"
+        "@arxiv-latex-mcp"
     ],
     "toolsSettings": {
         "execute_bash": {
             "autoAllowReadonly": true,
             "allowedCommands": [
-                "mkdir .*",
-                "cd .* && bun run format",
-                "cd .* && bun run ts-check",
-                "cd .* && bunx shadcn@latest .*"
+                "make",
+                "nix fmt"
             ]
-        },
-        "use_aws": {
-            "autoAllowReadonly": true
         },
         "fs_write": {
             "allowedPaths": [
-                "/Users/chenow/git/"
+                "~/git/"
             ]
         }
     },
     "resources": [
-        "file:///Users/chenow/.aws/amazonq/ressources/coding.md"
+        "file://~/.kiro/ressources/latex.md"
     ]
 }
