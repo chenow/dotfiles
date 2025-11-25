@@ -52,7 +52,7 @@
         user.name = config.git.profile.name;
         user.email = config.git.profile.email;
 
-        aliases = {
+        alias = {
           autofixup = "!f() { \
         commit=$(git log --oneline | ${pkgs.fzf}/bin/fzf --preview 'git show --color=always {1}' | cut -d' ' -f1); \
         if [ -n \"$commit\" ]; then \
