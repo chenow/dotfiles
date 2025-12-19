@@ -1,6 +1,4 @@
-local wezterm = require("wezterm")
-
-local config = wezterm.config_builder()
+local config = {}
 local act = wezterm.action
 
 config.color_scheme = "Catppuccin Mocha"
