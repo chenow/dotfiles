@@ -14,36 +14,41 @@
       profiles.default = {
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
-        extensions = with pkgs.vscode-extensions; [
-          # Nix
-          jnoortheen.nix-ide
+        extensions = with pkgs.vscode-extensions;
+          [
+            # Nix
+            jnoortheen.nix-ide
 
-          # Git
-          eamodio.gitlens
+            # Git
+            eamodio.gitlens
 
-          # Python
-          ms-python.python
-          charliermarsh.ruff
+            # Python
+            ms-python.python
+            charliermarsh.ruff
 
-          # Typescript
-          biomejs.biome
+            # Typescript
+            biomejs.biome
 
-          # Web
-          bradlc.vscode-tailwindcss
-          yoavbls.pretty-ts-errors
+            # Web
+            bradlc.vscode-tailwindcss
+            yoavbls.pretty-ts-errors
 
-          # Config files
-          redhat.vscode-yaml
-          redhat.vscode-xml
-          tamasfe.even-better-toml
+            # Config files
+            redhat.vscode-yaml
+            redhat.vscode-xml
+            tamasfe.even-better-toml
 
-          # Utilities
-          usernamehw.errorlens
-          pkief.material-icon-theme
-          bierner.markdown-mermaid
-          yzhang.markdown-all-in-one
-          ms-azuretools.vscode-containers
-        ];
+            # Utilities
+            usernamehw.errorlens
+            pkief.material-icon-theme
+            bierner.markdown-mermaid
+            yzhang.markdown-all-in-one
+            ms-azuretools.vscode-containers
+          ]
+          ++ (with pkgs.vscode-marketplace; [
+            # AI/Code Assistance
+            google.geminicodeassist
+          ]);
         userSettings = {
           # Nix
           # https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
@@ -148,6 +153,11 @@
           "security.workspace.trust.untrustedFiles" = "open";
           "redhat.telemetry.enabled" = false;
           "telemetry.telemetryLevel" = "off";
+
+          # Gemini Code Assist
+          "geminicodeassist.enableTelemetry" = false;
+          "http.systemCertificatesNode" = true;
+          "geminicodeassist.project" = "trendy-spots";
         };
       };
     };
