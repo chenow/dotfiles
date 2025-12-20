@@ -16,9 +16,7 @@ in {
 
     casks = setAsGreedyCasks [
       # Development Tools
-      "docker"
       "unetbootin"
-      "visual-studio-code"
       "hammerspoon"
       "figma"
       "telegram-desktop"

@@ -23,9 +23,8 @@
             ]
         },
         "nix-mcp": {
-            "command": "nix",
+            "command": "uvx",
             "args": [
-                "uvx",
                 "mcp-nixos"
             ]
         }
@@ -39,6 +38,7 @@
         "@nix-mcp"
     ],
     "allowedTools": [
+        "read_file",
         "@context7",
         "@github",
         "@nix-mcp"

@@ -13,6 +13,9 @@
         inherit system specialArgs inputs;
         modules =
           [
+            {nixpkgs.overlays = [inputs.nix-vscode-extensions.overlays.default];}
+          ]
+          ++ [
             inputs.nixvim.nixDarwinModules.nixvim
             inputs.home-manager.darwinModules.home-manager
             ../modules/darwin
@@ -33,6 +36,9 @@
       extraSpecialArgs = extraSpecialArgs // {inherit inputs;};
       modules =
         [
+          {nixpkgs.overlays = [inputs.nix-vscode-extensions.overlays.default];}
+        ]
+        ++ [
           inputs.nixvim.homeModules.nixvim
           ../modules/home-manager
           ../modules/vim
