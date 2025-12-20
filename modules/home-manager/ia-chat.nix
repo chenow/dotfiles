@@ -14,7 +14,12 @@
       docker
       python313
       uv
-      python313Packages.fastmcp
+      gemini-cli
+      pyright
+      ruff
+      biome
+      typescript-language-server
+      typescript
     ];
     programs.uv.enable = true;
 
@@ -22,9 +27,8 @@
       source = ./assets/kiro/agents;
       recursive = true;
     };
-
-    home.file.".gemini/agents" = {
-      source = ./assets/gemini;
+    home.file.".kiro/resources" = {
+      source = ./assets/kiro/resources;
       recursive = true;
     };
 
@@ -33,6 +37,7 @@
       k-code = "k chat --agent coding-agent";
       k-aws = "k chat --agent aws-agent";
       k-latex = "k chat --agent latex-agent";
+      k-nix = "k chat --agent nix-agent";
     };
 
     programs.zsh.initContent = ''

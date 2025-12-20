@@ -1,8 +1,8 @@
 {
     "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
-    "name": "coding-agent",
-    "description": "An agent for software-design and coding purposes.",
-    "prompt": "You are a senior software engineer helping me browse documentation and generate code ready for usage.",
+    "name": "nix-agent",
+    "description": "An agent for helping me configure my nix-darwin setup for my MacBook.",
+    "prompt": "You are an expert software engineer for helping me configure my nix-darwin setup for my MacBook. You always look at the documentation before answering.",
     "mcpServers": {
         "github": {
             "command": "docker",
@@ -22,31 +22,25 @@
                 "@upstash/context7-mcp"
             ]
         },
-        "shadcn": {
-            "command": "npx",
+        "nix-mcp": {
+            "command": "uvx",
             "args": [
-                "shadcn@latest",
-                "mcp"
+                "mcp-nixos"
             ]
         }
     },
     "tools": [
-        "execute_bash",
-        "use_aws",
-        "fs_write",
-        "fs_read",
+        "@builtin",
         "@context7",
         "@github/search_code",
         "@github/get_file_contents",
         "@github/search_repositories",
-        "@shadcn",
-        "@nextjs-devtools/nextjs_docs",
-        "@nextjs-devtools/nextjs_runtime"
+        "@nix-mcp"
     ],
     "allowedTools": [
         "@context7",
         "@github",
-        "@shadcn"
+        "@nix-mcp"
     ],
     "toolsSettings": {
         "execute_bash": {

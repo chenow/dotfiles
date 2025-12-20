@@ -58,6 +58,6 @@
         }
     },
     "resources": [
-        "file://~/.kiro/ressources/context.md"
+        "file://~/.kiro/resources/context.md"
     ]
 }

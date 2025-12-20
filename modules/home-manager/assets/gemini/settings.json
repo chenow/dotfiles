@@ -1,0 +1,35 @@
+{
+    "general.disableAutoUpdate": true,
+    "mcpServers": {
+        "github": {
+            "command": "docker",
+            "args": [
+                "run",
+                "-i",
+                "--rm",
+                "--env-file",
+                "/Users/chenow/secrets/github-access-token.env",
+                "ghcr.io/github/github-mcp-server"
+            ],
+            "includeTools": [
+                "search_code",
+                "get_file_contents",
+                "search_repositories"
+            ]
+        },
+        "context7": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@upstash/context7-mcp"
+            ]
+        },
+        "shadcn": {
+            "command": "npx",
+            "args": [
+                "shadcn@latest",
+                "mcp"
+            ]
+        }
+    }
+}

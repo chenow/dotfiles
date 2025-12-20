@@ -46,6 +46,10 @@
         ".run"
         ".kiro"
         "cdk.context.json"
+        "figma-code"
+        ".claude"
+        ".gemini"
+        ".agent"
       ];
 
       settings = {
