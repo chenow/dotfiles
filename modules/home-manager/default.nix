@@ -8,6 +8,7 @@
     ./ia-chat.nix
     ./ssh.nix
     ./television.nix
+    ./vscodium.nix
     ./wezterm.nix
     ./zsh.nix
   ];

@@ -19,6 +19,7 @@
 
     ia-chat.enable = true;
     additional.enablePersonal = true;
+    vscodium.enable = true;
 
     zsh.completions = ["bun" "terraform" "python" "aws" "uv"];
     home.sessionVariables = {

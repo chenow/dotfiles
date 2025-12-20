@@ -14,7 +14,7 @@
     (lib.mkAliasOptionModule ["direnv"] ["home-manager" "users" user "direnv"])
     (lib.mkAliasOptionModule ["ssh"] ["home-manager" "users" user "ssh"])
     (lib.mkAliasOptionModule ["zsh"] ["home-manager" "users" user "zsh"])
-    (lib.mkAliasOptionModule ["vscode"] ["home-manager" "users" user "vscode"])
+    (lib.mkAliasOptionModule ["vscodium"] ["home-manager" "users" user "vscodium"])
     (lib.mkAliasOptionModule ["dotfiles"] ["home-manager" "users" user "dotfiles"])
     (lib.mkAliasOptionModule ["git"] ["home-manager" "users" user "git"])
     (lib.mkAliasOptionModule ["wezterm"] ["home-manager" "users" user "wezterm"])

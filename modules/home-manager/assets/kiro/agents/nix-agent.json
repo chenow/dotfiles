@@ -23,8 +23,9 @@
             ]
         },
         "nix-mcp": {
-            "command": "uvx",
+            "command": "nix",
             "args": [
+                "uvx",
                 "mcp-nixos"
             ]
         }
@@ -47,9 +48,7 @@
             "autoAllowReadonly": true,
             "allowedCommands": [
                 "mkdir .*",
-                "cd .* && bun run format",
-                "cd .* && bun run ts-check",
-                "cd .* && bunx shadcn@latest .*"
+                "cd .* && nix eval .*"
             ]
         },
         "use_aws": {
