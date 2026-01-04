@@ -20,7 +20,7 @@
     (lib.mkAliasOptionModule ["wezterm"] ["home-manager" "users" user "wezterm"])
     (lib.mkAliasOptionModule ["home"] ["home-manager" "users" user "home"])
     (lib.mkAliasOptionModule ["docker"] ["home-manager" "users" user "docker"])
-    (lib.mkAliasOptionModule ["ia-chat"] ["home-manager" "users" user "ia-chat"])
+    (lib.mkAliasOptionModule ["kiro"] ["home-manager" "users" user "kiro"])
   ];
 
   home-manager = {

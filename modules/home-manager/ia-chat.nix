@@ -10,16 +10,19 @@
 
   config = lib.mkIf config.ia-chat.enable {
     home.packages = with pkgs; [
-      nodejs
-      docker
-      python313
+      # python
+      python3
       uv
-      gemini-cli
+      ty
       pyright
       ruff
+      # Typescript
+      nodejs
       biome
       typescript-language-server
       typescript
+      # Utilities
+      docker
     ];
     programs.uv.enable = true;
 
@@ -32,16 +35,22 @@
       recursive = true;
     };
 
+    # For kiro-cli binary
+    home.sessionPath = ["$HOME/.local/bin"];
+
     zsh.shellAliases = {
       k = "kiro-cli";
       k-code = "k chat --agent coding-agent";
       k-aws = "k chat --agent aws-agent";
       k-latex = "k chat --agent latex-agent";
       k-nix = "k chat --agent nix-agent";
+      k-cdk = "k chat --agent cdk-agent";
     };
 
     programs.zsh.initContent = ''
       . ${config.home.homeDirectory}/secrets/load-secrets.sh
+      . ${config.home.homeDirectory}/secrets/stripe-secret-key.env
+      . ${config.home.homeDirectory}/secrets/context7-api-key.env
     '';
   };
 }

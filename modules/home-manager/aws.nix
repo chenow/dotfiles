@@ -8,6 +8,18 @@ in {
   options.awscli = {
     enable = lib.mkEnableOption "Enable AWS CLI support.";
 
+    extraConfig = lib.mkOption {
+      type = with lib.types; attrsOf anything;
+      default = {};
+      description = "Extra AWS CLI configuration sections to add to the config file.";
+      example = {
+        "profile galipet" = {
+          region = "eu-west-2";
+          output = "json";
+        };
+      };
+    };
+
     accounts = lib.mkOption {
       type = with lib.types;
         listOf (submodule {
@@ -82,6 +94,6 @@ in {
         )
         cfg.accounts;
     in
-      builtins.listToAttrs entries;
+      builtins.listToAttrs entries // cfg.extraConfig;
   };
 }

@@ -6,7 +6,7 @@
     ./docker.nix
     ./dotfiles.nix
     ./git.nix
-    ./ia-chat.nix
+    ./kiro.nix
     ./ssh.nix
     ./television.nix
     ./vscodium.nix

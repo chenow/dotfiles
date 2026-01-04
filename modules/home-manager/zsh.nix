@@ -38,6 +38,7 @@
     home.shell.enableZshIntegration = true;
 
     programs.zsh = {
+      dotDir = "${config.xdg.configHome}/zsh";
       enable = true;
       syntaxHighlighting.enable = true;
       enableCompletion = true;

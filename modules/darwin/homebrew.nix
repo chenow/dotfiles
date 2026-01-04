@@ -1,5 +1,5 @@
 {...}: let
-  setAsGreedyCasks = builtins.map (cask: {
+  setAsGreedyCasks = map (cask: {
     name = cask;
     greedy = true;
   });
@@ -18,22 +18,12 @@ in {
       # Development Tools
       "unetbootin"
       "hammerspoon"
-      "figma"
       "telegram-desktop"
 
       # Messaging
       "whatsapp"
 
-      # Microsoft suite
-      "microsoft-outlook"
-      "microsoft-excel"
-      "microsoft-powerpoint"
-      "microsoft-teams"
-      "microsoft-word"
-      "microsoft-auto-update"
-
       # Browsers
-      "arc"
       "raycast"
     ];
     caskArgs.no_quarantine = true;

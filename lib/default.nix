@@ -15,8 +15,7 @@
           [
             {nixpkgs.overlays = [inputs.nix-vscode-extensions.overlays.default];}
           ]
-          ++
-          [
+          ++ [
             inputs.nixvim.nixDarwinModules.nixvim
             inputs.home-manager.darwinModules.home-manager
             ../modules/darwin

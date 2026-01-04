@@ -12,16 +12,18 @@
     };
     awscli = {
       enable = true;
+      extraConfig = {
+        "profile galipet" = {
+          region = "eu-west-3";
+          output = "json";
+          login_session = "arn:aws:iam::437064342433:user/antoine.cheneau@outlook.com";
+        };
+      };
       accounts = [
         {
-          name = "mcp-learning";
-          accountId = "081373342303";
-        }
-        {
-          name = "trophenix";
-          accountId = "770688009346";
-          region = "eu-west-3";
-          ssoStartUrl = "https://d-806774b8a1.awsapps.com/start/#";
+          name = "galipet-personal";
+          accountId = "318361291054";
+          region = "eu-west-1";
         }
         {
           name = "personal-management";

@@ -41,13 +41,14 @@
             # Utilities
             usernamehw.errorlens
             pkief.material-icon-theme
-            bierner.markdown-mermaid
             yzhang.markdown-all-in-one
             ms-azuretools.vscode-containers
           ]
           ++ (with pkgs.vscode-marketplace; [
             # AI/Code Assistance
             google.geminicodeassist
+            astral-sh.ty
+            tomoyukim.vscode-mermaid-editor
           ]);
         userSettings = {
           # Nix
@@ -80,7 +81,9 @@
               "source.organizeImports" = "always";
             };
           };
+          "python.languageServer" = "None";
           "ruff.fixAll" = true;
+          "ruff.configurationPreference" = "filesystemFirst";
 
           # TypeScript/JavaScript
           "[javascript][typescript][javascriptreact][typescriptreact]" = {
@@ -95,6 +98,7 @@
 
           # CSS/Tailwind
           "files.associations"."*.css" = "tailwindcss";
+          "tailwindCSS.lint.suggestCanonicalClasses" = "ignore";
 
           # Docker
           "[dockerfile]"."editor.defaultFormatter" = "ms-azuretools.vscode-containers";
