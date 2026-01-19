@@ -78,7 +78,7 @@
   defaultToolsSettings = {
     execute_bash = {
       autoAllowReadonly = true;
-      allowedCommands = ["make" "nix fmt"];
+      allowedCommands = ["make" "nix fmt" "mkdir -p .*" "bun run ts-check .*"];
     };
     use_aws.autoAllowReadonly = true;
     fs_write.allowedPaths = ["~/git/"];

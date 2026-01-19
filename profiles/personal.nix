@@ -43,6 +43,22 @@
             "cd .* && bun run ts-check"
             "cd .* && bunx shadcn@latest .*"
           ];
+          hooks = {
+            "postToolUse" = [
+              {
+                "matcher" = "fs_write";
+                "command" = "if [ -f package.json ]; then bun run format 2>/dev/null || true; fi";
+              }
+              {
+                "matcher" = "fs_write";
+                "command" = "if [ -f frontend/package.json ]; then cd frontend && bun run format 2>/dev/null || true; fi";
+              }
+              {
+                "matcher" = "fs_write";
+                "command" = "if [ -f pyproject.toml ] || [ -f backend/pyproject.toml ]; then ruff format . 2>/dev/null || true; fi";
+              }
+            ];
+          };
         };
 
         nix-agent = {
@@ -79,6 +95,14 @@
             aws-knowledge = true;
           };
           extraAllowedCommands = ["cd .* && bun run format" "cd .* && bun run ts-check"];
+          hooks = {
+            "postToolUse" = [
+              {
+                "matcher" = "fs_write";
+                "command" = "if [ -f package.json ]; then bun run format 2>/dev/null || true; fi";
+              }
+            ];
+          };
         };
 
         latex-agent = {
