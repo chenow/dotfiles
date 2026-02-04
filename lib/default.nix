@@ -36,6 +36,9 @@
       extraSpecialArgs = extraSpecialArgs // {inherit inputs;};
       modules =
         [
+          {nixpkgs.overlays = [inputs.nix-vscode-extensions.overlays.default];}
+        ]
+        ++ [
           inputs.nixvim.homeModules.nixvim
           ../modules/home-manager
           ../modules/vim
