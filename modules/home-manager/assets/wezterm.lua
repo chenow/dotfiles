@@ -8,14 +8,6 @@ config.hide_tab_bar_if_only_one_tab = true
 config.front_end = "WebGpu" -- to remove when the bug is fixed: https://github.com/wez/wezterm/issues/5990
 config.hide_mouse_cursor_when_typing = false
 
--- Enable hyperlink detection across line breaks
-config.hyperlink_rules = {
-	-- Detect URLs that span multiple lines
-	{
-		regex = [[(https?://[^\s]+)(?:\s*\n\s*([^\s]+))*]],
-		format = "$1$2",
-	},
-}
 config.keys = {
 	{ key = "L", mods = "ALT|SHIFT", action = wezterm.action({ SendString = "|" }) },
 	{
