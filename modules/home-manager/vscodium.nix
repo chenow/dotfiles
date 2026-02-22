@@ -43,6 +43,7 @@
             pkief.material-icon-theme
             yzhang.markdown-all-in-one
             ms-azuretools.vscode-containers
+            mechatroner.rainbow-csv
           ]
           ++ (with pkgs.vscode-marketplace; [
             # AI/Code Assistance
