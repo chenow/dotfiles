@@ -14,6 +14,7 @@
         modules =
           [
             {nixpkgs.overlays = [inputs.nix-vscode-extensions.overlays.default];}
+            {home-manager.sharedModules = [inputs.agent-skills.homeManagerModules.default];}
           ]
           ++ [
             inputs.nixvim.nixDarwinModules.nixvim
@@ -40,6 +41,7 @@
         ]
         ++ [
           inputs.nixvim.homeModules.nixvim
+          inputs.agent-skills.homeManagerModules.default
           ../modules/home-manager
           ../modules/vim
           ../profiles

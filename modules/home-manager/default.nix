@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./additional.nix
+    ./agent-skills.nix
     ./aws.nix
     ./direnv.nix
     ./docker.nix

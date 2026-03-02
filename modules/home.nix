@@ -21,6 +21,7 @@
     (lib.mkAliasOptionModule ["home"] ["home-manager" "users" user "home"])
     (lib.mkAliasOptionModule ["docker"] ["home-manager" "users" user "docker"])
     (lib.mkAliasOptionModule ["kiro"] ["home-manager" "users" user "kiro"])
+    (lib.mkAliasOptionModule ["agent-skills"] ["home-manager" "users" user "agent-skills"])
   ];
 
   home-manager = {
