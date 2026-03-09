@@ -8,10 +8,12 @@
     ./dotfiles.nix
     ./git.nix
     ./kiro.nix
+    ./llm-agents.nix
     ./ssh.nix
     ./television.nix
     ./vscodium.nix
     ./wezterm.nix
+    ./zed.nix
     ./zsh.nix
   ];
 }
