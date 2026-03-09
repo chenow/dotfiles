@@ -200,7 +200,6 @@ in {
       typescript
       # Utilities
       docker
-      gemini-cli
     ];
     programs.uv.enable = true;
     home.sessionPath = ["$HOME/.local/bin"];

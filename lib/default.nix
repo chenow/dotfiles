@@ -13,7 +13,12 @@
         inherit system specialArgs inputs;
         modules =
           [
-            {nixpkgs.overlays = [inputs.nix-vscode-extensions.overlays.default];}
+            {
+              nixpkgs.overlays = [
+                inputs.nix-vscode-extensions.overlays.default
+                inputs.llm-agents.overlays.default
+              ];
+            }
             {home-manager.sharedModules = [inputs.agent-skills.homeManagerModules.default];}
           ]
           ++ [
@@ -37,7 +42,12 @@
       extraSpecialArgs = extraSpecialArgs // {inherit inputs;};
       modules =
         [
-          {nixpkgs.overlays = [inputs.nix-vscode-extensions.overlays.default];}
+          {
+            nixpkgs.overlays = [
+              inputs.nix-vscode-extensions.overlays.default
+              inputs.llm-agents.overlays.default
+            ];
+          }
         ]
         ++ [
           inputs.nixvim.homeModules.nixvim

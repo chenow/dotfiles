@@ -25,6 +25,10 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agent-skills = {
       url = "github:Kyure-A/agent-skills-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +39,11 @@
       flake = false;
     };
   };
+  nixConfig.extra-substituters = [
+    "https://nix-community.cachix.org/"
+    "https://cache.numtide.com"
+  ];
+
   outputs = {self, ...} @ inputs: let
     user = "chenow";
     treefmtConfig = import ./treefmt.nix;

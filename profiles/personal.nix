@@ -18,6 +18,8 @@
       stripe-cli
     ];
 
+    llm-agents.enable = true;
+
     kiro = {
       enable = true;
       agents = {
@@ -122,6 +124,7 @@
 
     additional.enablePersonal = true;
     vscodium.enable = true;
+    zed.enable = true;
 
     zsh.completions = ["bun" "terraform" "python" "aws" "uv"];
     home.sessionVariables = {
