@@ -1,4 +1,5 @@
 {inputs, ...}: {
+  caches = import ./caches.nix;
   eachSystem = inputs.nixpkgs.lib.genAttrs (import inputs.systems);
   makeFormatter = system: treefmtConfig: inputs.treefmt-nix.lib.mkWrapper (inputs.nixpkgs.legacyPackages.${system}) treefmtConfig;
 
