@@ -14,6 +14,10 @@ in {
       upgrade = true;
     };
 
+    taps = [
+      "homebrew/bundle"
+      "homebrew/cask"
+    ];
     casks = setAsGreedyCasks [
       # Development Tools
       "unetbootin"
