@@ -44,6 +44,7 @@
             yzhang.markdown-all-in-one
             ms-azuretools.vscode-containers
             mechatroner.rainbow-csv
+            tomoki1207.pdf
           ]
           ++ (with pkgs.vscode-marketplace; [
             # AI/Code Assistance
