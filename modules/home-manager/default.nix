@@ -15,5 +15,6 @@
     ./wezterm.nix
     ./zed.nix
     ./zsh.nix
+    ./vim
   ];
 }

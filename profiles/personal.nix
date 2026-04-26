@@ -19,6 +19,7 @@
     ];
 
     llm-agents.enable = true;
+    vim.enable = false;
 
     kiro = {
       enable = true;

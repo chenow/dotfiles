@@ -20,14 +20,18 @@
                 inputs.llm-agents.overlays.default
               ];
             }
-            {home-manager.sharedModules = [inputs.agent-skills.homeManagerModules.default];}
+            {
+              home-manager.sharedModules = [
+                inputs.agent-skills.homeManagerModules.default
+                inputs.nixvim.homeModules.nixvim
+              ];
+            }
           ]
           ++ [
             inputs.nixvim.nixDarwinModules.nixvim
             inputs.home-manager.darwinModules.home-manager
             ../modules/darwin
             ../modules/home.nix
-            ../modules/vim
             ../profiles
           ]
           ++ modules;
@@ -54,7 +58,6 @@
           inputs.nixvim.homeModules.nixvim
           inputs.agent-skills.homeManagerModules.default
           ../modules/home-manager
-          ../modules/vim
           ../profiles
         ]
         ++ modules;

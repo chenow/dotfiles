@@ -36,7 +36,7 @@
             # Config files
             redhat.vscode-yaml
             redhat.vscode-xml
-            tamasfe.even-better-toml
+            tombi-toml.tombi
 
             # Utilities
             usernamehw.errorlens

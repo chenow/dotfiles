@@ -24,6 +24,7 @@
     (lib.mkAliasOptionModule ["llm-agents"] ["home-manager" "users" user "llm-agents"])
     (lib.mkAliasOptionModule ["zed"] ["home-manager" "users" user "zed"])
     (lib.mkAliasOptionModule ["agent-skills"] ["home-manager" "users" user "agent-skills"])
+    (lib.mkAliasOptionModule ["vim"] ["home-manager" "users" user "vim"])
   ];
 
   home-manager = {
