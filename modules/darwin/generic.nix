@@ -18,6 +18,15 @@
   nix = {
     package = pkgs.nix;
     enable = true;
+
+    # memory optimization
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 14d -d";
+      dates = "weekly";
+    };
+    optimise.automatic = true;
+
     settings = {
       allowed-users = ["${user}"];
       trusted-users = [
