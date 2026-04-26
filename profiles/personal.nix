@@ -10,11 +10,12 @@
 
   config = lib.mkIf config.profiles.personal.enable {
     home.packages = with pkgs; [
-      terraform
+      # terraform
       python3
-      postgresql
-      supabase-cli
-      aws-cdk-cli
+      # postgresql
+      # supabase-cli
+      # Uncomment when in stable releases
+      # aws-cdk-cli
       stripe-cli
     ];
 

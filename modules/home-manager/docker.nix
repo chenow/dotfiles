@@ -17,6 +17,7 @@ in {
       docker-compose
     ];
 
-    services.colima.enable = true;
+    # Uncomment when available in stable versions
+    # services.colima.enable = true;
   };
 }

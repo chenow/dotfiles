@@ -23,7 +23,7 @@
       programs.television.enable = true;
     }
     (lib.mkIf config.additional.enablePersonal {
-      programs.pgcli.enable = true;
+      # programs.pgcli.enable = true; # Disabled due to test failures in cli-helpers
       programs.bun.enable = true;
       programs.uv.enable = true;
     })

@@ -36,7 +36,6 @@
             # Config files
             redhat.vscode-yaml
             redhat.vscode-xml
-            tombi-toml.tombi
 
             # Utilities
             usernamehw.errorlens
@@ -51,6 +50,7 @@
             google.geminicodeassist
             astral-sh.ty
             tomoyukim.vscode-mermaid-editor
+            tombi-toml.tombi
           ]);
         userSettings = {
           # Nix
