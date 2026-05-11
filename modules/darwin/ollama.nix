@@ -4,41 +4,33 @@
   lib,
   user,
   ...
-}: let
-  ollama = pkgs.ollama;
-in {
+}: {
   config = lib.mkIf config.home-manager.users.${user}.llm-agents.enable {
-    # Ollama server — starts at login, restarts on crash
     launchd.user.agents.ollama = {
-      command = "${ollama}/bin/ollama serve";
-      environment.HOME = "/Users/${user}";
+      command = "${pkgs.ollama}/bin/ollama serve";
+      environment = {
+        HOME = "/Users/${user}";
+
+        # Sets the global limit for the conversation memory window (128k tokens).
+        OLLAMA_CONTEXT_LENGTH = "131072";
+
+        # Compresses conversation memory to 4-bit, saving ~75% of RAM compared to uncompressed.
+        OLLAMA_KV_CACHE_TYPE = "q4_0";
+
+        # Prevents multiple models from loading simultaneously to avoid exhausting your 24GB RAM.
+        OLLAMA_MAX_LOADED_MODELS = "1";
+
+        # Immediately unloads the model from RAM when it is no longer being actively used.
+        OLLAMA_NOPRELOAD = "1";
+
+        # Disables internal "Chain of Thought" reasoning steps to save processing time and memory.
+        OLLAMA_REASONING = "false";
+      };
       serviceConfig = {
         KeepAlive = true;
         RunAtLoad = true;
         StandardOutPath = "/tmp/ollama.log";
         StandardErrorPath = "/tmp/ollama.err";
-      };
-    };
-
-    # One-shot: pull models after ollama starts
-    launchd.user.agents.ollama-pull = {
-      script = ''
-        # Wait for ollama to be ready
-        for i in $(seq 1 30); do
-          ${ollama}/bin/ollama list >/dev/null 2>&1 && break
-          sleep 1
-        done
-        ${ollama}/bin/ollama pull qwen2.5-coder:7b
-        ${ollama}/bin/ollama pull qwen2.5-coder:0.5b
-        ${ollama}/bin/ollama pull glm-4.7-flash
-        ${ollama}/bin/ollama pull devstral
-      '';
-      environment.HOME = "/Users/${user}";
-      serviceConfig = {
-        RunAtLoad = true;
-        LaunchOnlyOnce = true;
-        StandardOutPath = "/tmp/ollama-pull.log";
-        StandardErrorPath = "/tmp/ollama-pull.err";
       };
     };
   };

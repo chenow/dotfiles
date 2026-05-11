@@ -36,31 +36,32 @@
           api_url = "http://localhost:11434";
           available_models = [
             {
-              name = "qwen2.5-coder:7b";
-              display_name = "Qwen 2.5 Coder 7B (32K)";
-              max_tokens = 32768;
+              name = "batiai/qwen3.5-9b";
+              display_name = "Qwen 3.6 5.6GB";
+              max_tokens = 131072;
+              supports_tools = true;
+              supports_images = false;
+              options.think = false;
             }
             {
-              name = "qwen3-coder:30b";
-              display_name = "Qwen3 Coder 30B MoE (256K)";
-              max_tokens = 65536;
-            }
-            {
-              name = "devstral";
-              display_name = "Devstral 24B (128K)";
-              max_tokens = 65536;
+              name = "batiai/gemma4-e4b:q4";
+              display_name = "Gemma4 2B";
+              max_tokens = 131072;
+              supports_tools = true;
+              supports_images = false;
+              options.think = false;
             }
           ];
         };
-        agent.default_model = {
-          provider = "ollama";
-          model = "devstral";
-        };
+
+        # Inline Autocomplete (Edit Predictions)
         edit_predictions.mode = "eager";
         edit_predictions.default_model = {
           provider = "ollama";
           model = "qwen2.5-coder:0.5b";
         };
+
+        # Agent Servers / ACP
         agent_servers = {
           kiro = {
             type = "custom";
@@ -68,10 +69,9 @@
             args = ["acp"];
             env = {};
           };
-          gemini.ignore_system_version = false;
         };
 
-        # Editor
+        # --- Editor UI & Theme ---
         vim_mode = false;
         theme = {
           mode = "dark";
@@ -81,71 +81,32 @@
         ui_font_size = 16;
         buffer_font_size = 14;
         buffer_font_family = "JetBrainsMono Nerd Font";
-        tab_size = 2;
         format_on_save = "on";
-        autosave.after_delay.milliseconds = 1000;
+
+        # Performance Settings
         minimap.enabled = false;
         inlay_hints.enabled = true;
         inline_diagnostics.enabled = true;
         linked_edits = true;
 
-        # Terminal
-        terminal = {
-          font_family = "JetBrainsMono Nerd Font";
-          shell.program = "zsh";
-        };
-
-        # Telemetry
-        telemetry = {
-          diagnostics = false;
-          metrics = false;
-        };
-
-        # File exclusions
-        file_scan_exclusions = [
-          "**/.pytest_cache"
-          "**/.mypy_cache"
-          "**/.ruff_cache"
-          "**/__pycache__"
-          "**/.direnv"
-          "**/.git"
-          "**/node_modules"
-        ];
-
-        # Languages
+        # Languages (LSP/Formatters)
         languages = {
           Nix = {
             formatter.external = {
               command = "alejandra";
               arguments = [];
             };
-            tab_size = 2;
           };
           Python = {
             formatter.external = {
               command = "ruff";
               arguments = ["format" "-"];
             };
-            tab_size = 4;
             code_actions_on_format = {
               "source.fixAll.ruff" = true;
               "source.organizeImports.ruff" = true;
             };
           };
-          JavaScript = {
-            formatter.language_server.name = "biome";
-            code_actions_on_format."source.organizeImports.biome" = true;
-          };
-          TypeScript = {
-            formatter.language_server.name = "biome";
-            code_actions_on_format."source.organizeImports.biome" = true;
-          };
-          TSX = {
-            formatter.language_server.name = "biome";
-            code_actions_on_format."source.organizeImports.biome" = true;
-          };
-          YAML.tab_size = 2;
-          Markdown.format_on_save = "off";
         };
       };
     };

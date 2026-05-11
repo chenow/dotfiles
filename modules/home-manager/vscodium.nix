@@ -96,7 +96,7 @@
               "source.fixAll.biome" = "always";
             };
           };
-          "javascript.updateImportsOnFileMove.enabled" = "always";
+          "js/ts.updateImportsOnFileMove.enabled" = "always";
 
           # CSS/Tailwind
           "files.associations"."*.css" = "tailwindcss";
@@ -117,6 +117,16 @@
           "[json]"."editor.defaultFormatter" = "vscode.json-language-features";
           "[jsonc]"."editor.defaultFormatter" = "vscode.json-language-features";
           "[markdown]"."editor.defaultFormatter" = "yzhang.markdown-all-in-one";
+          "json.schemaDownload.trustedDomains" = {
+            "https://schemastore.azurewebsites.net/" = true;
+            "https://raw.githubusercontent.com/microsoft/vscode/" = true;
+            "https://raw.githubusercontent.com/devcontainers/spec/" = true;
+            "https://www.schemastore.org/" = true;
+            "https://json.schemastore.org/" = true;
+            "https://json-schema.org/" = true;
+            "https://developer.microsoft.com/json-schemas/" = true;
+            "https://biomejs.dev" = true;
+          };
 
           # Explorer/Workbench
           "workbench.iconTheme" = "material-icon-theme";

@@ -46,13 +46,13 @@
         persistent-apps = [
           "/Applications/Arc.app"
           "/Applications/Microsoft Outlook.app"
-          "/Applications/Microsoft Teams.app"
-          "/Applications/Obsidian.app"
-          "/Applications/WezTerm.app"
-          "/Applications/Visual Studio Code.app"
+          "/Applications/Nix Apps/Obsidian.app"
+          "/Users/${user}/Applications/Home Manager Apps/WezTerm.app"
+          "/Users/${user}/Applications/Home Manager Apps/VSCodium.app"
+          "/Users/${user}/Applications/Home Manager Apps/Zed.app"
           "/Applications/WhatsApp.app"
-          "/Applications/Slack.app"
-          "/Applications/Telegram.app"
+          "/Applications/Nix Apps/Slack.app"
+          "/Applications/Nix Apps/Raycast.app"
         ];
         persistent-others = [
           "/Users/${user}/Desktop"
