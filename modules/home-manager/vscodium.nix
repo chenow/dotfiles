@@ -7,7 +7,7 @@
   options.vscodium.enable = lib.mkEnableOption "VSCodium";
 
   config = lib.mkIf config.vscodium.enable {
-    programs.vscode = {
+    programs.vscodium = {
       enable = true;
       package = pkgs.vscodium;
       mutableExtensionsDir = false;
