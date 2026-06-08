@@ -16,7 +16,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = [
-      pkgs.ollama
       pkgs.llm-agents.claude-code
       pkgs.llm-agents.gemini-cli
       pkgs.llm-agents.opencode

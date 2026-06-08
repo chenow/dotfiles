@@ -12,23 +12,23 @@ in {
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks = {
+      settings = {
         github = {
-          hostname = "github.com";
-          host = "github.com";
-          identityFile = github-key-path;
+          Host = "github.com";
+          HostName = "github.com";
+          IdentityFile = github-key-path;
         };
         "*" = {
-          forwardAgent = false;
-          serverAliveInterval = 0;
-          serverAliveCountMax = 3;
-          compression = true;
-          addKeysToAgent = "no";
-          hashKnownHosts = false;
-          userKnownHostsFile = "~/.ssh/known_hosts";
-          controlMaster = "no";
-          controlPath = "~/.ssh/cm-%C";
-          controlPersist = "no";
+          ForwardAgent = false;
+          ServerAliveInterval = 0;
+          ServerAliveCountMax = 3;
+          Compression = true;
+          AddKeysToAgent = "no";
+          HashKnownHosts = false;
+          UserKnownHostsFile = "~/.ssh/known_hosts";
+          ControlMaster = "no";
+          ControlPath = "~/.ssh/cm-%C";
+          ControlPersist = "no";
         };
       };
     };

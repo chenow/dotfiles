@@ -20,6 +20,7 @@
     ];
 
     llm-agents.enable = true;
+    github.enable = true;
     vim.enable = false;
 
     kiro = {

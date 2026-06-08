@@ -17,6 +17,7 @@
     (lib.mkAliasOptionModule ["vscodium"] ["home-manager" "users" user "vscodium"])
     (lib.mkAliasOptionModule ["dotfiles"] ["home-manager" "users" user "dotfiles"])
     (lib.mkAliasOptionModule ["git"] ["home-manager" "users" user "git"])
+    (lib.mkAliasOptionModule ["github"] ["home-manager" "users" user "github"])
     (lib.mkAliasOptionModule ["wezterm"] ["home-manager" "users" user "wezterm"])
     (lib.mkAliasOptionModule ["home"] ["home-manager" "users" user "home"])
     (lib.mkAliasOptionModule ["docker"] ["home-manager" "users" user "docker"])

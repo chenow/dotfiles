@@ -6,6 +6,5 @@
     ./system.nix
     ./user.nix
     ./apps.nix
-    ./ollama.nix
   ];
 }

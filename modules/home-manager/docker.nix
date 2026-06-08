@@ -18,6 +18,6 @@ in {
     ];
 
     # Uncomment when available in stable versions
-    # services.colima.enable = true;
+    services.colima.enable = true;
   };
 }

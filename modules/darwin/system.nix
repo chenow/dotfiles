@@ -13,7 +13,7 @@
   # Turn off NIX_PATH warnings now that we're using flakes
   system.checks.verifyNixPath = false;
 
-  system.stateVersion = 5;
+  system.stateVersion = 7;
   system.configurationRevision = self.rev or self.dirtyRev or null;
 
   system = {
