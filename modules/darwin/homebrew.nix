@@ -23,7 +23,6 @@ in {
       "unetbootin"
       "hammerspoon"
       "telegram-desktop"
-      "docker"
 
       # Messaging
       "whatsapp"
