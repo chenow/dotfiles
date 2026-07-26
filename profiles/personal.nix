@@ -17,6 +17,7 @@
       # Uncomment when in stable releases
       # aws-cdk-cli
       stripe-cli
+      marp-cli
     ];
 
     llm-agents.enable = true;

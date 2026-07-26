@@ -17,7 +17,7 @@
             {
               nixpkgs.overlays = [
                 inputs.nix-vscode-extensions.overlays.default
-                inputs.llm-agents.overlays.default
+                inputs.llm-agents.overlays.shared-nixpkgs
               ];
             }
             {
@@ -50,7 +50,7 @@
           {
             nixpkgs.overlays = [
               inputs.nix-vscode-extensions.overlays.default
-              inputs.llm-agents.overlays.default
+              inputs.llm-agents.overlays.shared-nixpkgs
             ];
           }
         ]
