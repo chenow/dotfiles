@@ -17,8 +17,9 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = [
       pkgs.llm-agents.claude-code
-      pkgs.llm-agents.gemini-cli
+      pkgs.llm-agents.antigravity-cli
       pkgs.llm-agents.opencode
+      pkgs.whichllm
     ];
 
     xdg.configFile."opencode/opencode.json".text = builtins.toJSON {
