@@ -10,6 +10,7 @@
   # Each alias maps `<name>` -> `home-manager.users.<user>.<name>`.
   imports = [
     (lib.mkAliasOptionModule ["additional"] ["home-manager" "users" user "additional"])
+    (lib.mkAliasOptionModule ["agents"] ["home-manager" "users" user "agents"])
     (lib.mkAliasOptionModule ["awscli"] ["home-manager" "users" user "awscli"])
     (lib.mkAliasOptionModule ["direnv"] ["home-manager" "users" user "direnv"])
     (lib.mkAliasOptionModule ["ssh"] ["home-manager" "users" user "ssh"])
@@ -22,9 +23,7 @@
     (lib.mkAliasOptionModule ["home"] ["home-manager" "users" user "home"])
     (lib.mkAliasOptionModule ["docker"] ["home-manager" "users" user "docker"])
     (lib.mkAliasOptionModule ["kiro"] ["home-manager" "users" user "kiro"])
-    (lib.mkAliasOptionModule ["llm-agents"] ["home-manager" "users" user "llm-agents"])
     (lib.mkAliasOptionModule ["zed"] ["home-manager" "users" user "zed"])
-    (lib.mkAliasOptionModule ["agent-skills"] ["home-manager" "users" user "agent-skills"])
     (lib.mkAliasOptionModule ["vim"] ["home-manager" "users" user "vim"])
   ];
 

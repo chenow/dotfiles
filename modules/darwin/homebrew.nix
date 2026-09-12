@@ -16,7 +16,6 @@ in {
 
     casks = setAsGreedyCasks [
       # Development Tools
-      "unetbootin"
       "hammerspoon"
       "telegram-desktop"
 

@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./additional.nix
-    ./agent-skills.nix
+    ./agents.nix
     ./aws.nix
     ./direnv.nix
     ./docker.nix
@@ -9,8 +9,6 @@
     ./git.nix
     ./github.nix
     ./kiro.nix
-    ./llm-agents.nix
-    ./ollama.nix
     ./ssh.nix
     ./television.nix
     ./vscodium.nix

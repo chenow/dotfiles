@@ -20,7 +20,7 @@
       marp-cli
     ];
 
-    llm-agents.enable = true;
+    agents.enable = true;
     github.enable = true;
     vim.enable = false;
 
@@ -128,7 +128,7 @@
 
     additional.enablePersonal = true;
     vscodium.enable = true;
-    zed.enable = true;
+    zed.enable = false;
 
     zsh.completions = ["bun" "terraform" "python" "aws" "uv"];
     home.sessionVariables = {
