@@ -1,0 +1,31 @@
+{
+    "nix.enableLanguageServer": true,
+    "nix.serverPath": "nixd",
+    "editor.formatOnSave": true,
+    // nixd settings: https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
+    // (nil, the other Nix LSP, has no option completion; this project uses nixd.)
+    "nix.serverSettings": {
+        "nixd": {
+            "formatting": {
+                "command": [
+                    "alejandra"
+                ]
+            },
+            // `pkgs.` completion from the flake's own nixpkgs input.
+            "nixpkgs": {
+                "expr": "import (builtins.getFlake (builtins.toString ./.)).inputs.nixpkgs { }"
+            },
+            // Option completion. Each entry is an independent option set; nixd
+            // merges them for completion/hover. `my.*` (this repo's modules) is
+            // included in both: aliased at the nix-darwin level, native in HM.
+            "options": {
+                "darwin": {
+                    "expr": "(builtins.getFlake (builtins.toString ./.)).darwinConfigurations.\"MacBook-Pro-de-Antoine\".options"
+                },
+                "home-manager": {
+                    "expr": "(builtins.getFlake (builtins.toString ./.)).darwinConfigurations.\"MacBook-Pro-de-Antoine\".options.home-manager.users.type.getSubOptions []"
+                }
+            }
+        }
+    }
+}

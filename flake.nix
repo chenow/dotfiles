@@ -16,6 +16,8 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Pins the Homebrew version itself (not formulae/casks).
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";

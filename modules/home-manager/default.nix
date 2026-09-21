@@ -1,20 +1,11 @@
+# Home Manager modules, grouped by concern. Every module is opt-in through
+# `my.<group>.<feature>.enable`; nothing is applied by default.
 {...}: {
   imports = [
-    ./additional.nix
-    ./agents.nix
-    ./aws.nix
-    ./direnv.nix
-    ./docker.nix
-    ./dotfiles.nix
-    ./git.nix
-    ./github.nix
-    ./kiro.nix
-    ./ssh.nix
-    ./television.nix
-    ./vscodium.nix
-    ./wezterm.nix
-    ./zed.nix
-    ./zsh.nix
-    ./vim
+    ./features.nix
+    ./shell
+    ./dev
+    ./editors
+    ./ai
   ];
 }
